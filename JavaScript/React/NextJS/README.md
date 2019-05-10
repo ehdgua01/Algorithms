@@ -19,7 +19,7 @@ NextJS를 사용하지 않고서도 라우팅, SSR을 구현하는 것이 불가
 1. Universal Redenring(Isomorphic application)  
    SPA(Single Page Application), CSR(Client-Side Rendering)의 단점인 비교적 느린 초기 렌더링 시간을 SSR(Server-Side Rendering)을 통하여 대폭 줄였고, 그 이후에 페이지 이동은 페이지 갱신없이 서버로부터 필요한 리소스만 받아서 클라이언트에서 렌더링하는 방식으로 초기 렌더링 시간은 줄이고, 서버 자원을 아낄 수 있다.
 
-   ![Next인척하는 Nuxt](./lifecycle.png)
+   ![Next인척하는 Nuxt](./lifecycle.png)  
    (Next인척하는 Nuxt 사진...)
 
 2. Code Splitting  
