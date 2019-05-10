@@ -81,3 +81,5 @@ React에 입문하고 나서 컴포넌트 개념과 부모-자식를 통한 데�
 - https://velopert.com/3606
 
 - http://webframeworks.kr/tutorials/react/react-dataflow/
+
+- https://medium.com/@Dongmin_Jang/reactjs-context-api-korean-%ED%95%9C%EA%B8%80-%EC%9E%91%EC%84%B1%EC%A4%91-79edaf18efff
