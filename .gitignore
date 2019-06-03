@@ -126,3 +126,4 @@ pip-selfcheck.json
 
 # End of https://www.gitignore.io/api/macos,pycharm,virtualenv
 __pycache__
+.vscode
