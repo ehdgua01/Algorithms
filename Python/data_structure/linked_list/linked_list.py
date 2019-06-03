@@ -1,15 +1,16 @@
-class Node:
+class Node(object):
     def __init__(self, data):
         self.data = data
         self.next_node = None
 
 
-class LinkedList:
+class LinkedList(object):
     def __init__(self):
         self.head = None
         self.tail = None
         self.pointer = None
         self.size = 0
+        print("데이터 초기화")
 
     def clear(self):
         self.__init__()
@@ -21,6 +22,7 @@ class LinkedList:
         if self.is_empty():
             self.head = node
             self.pointer = self.head
+
         else:
             self.tail = self.head
             while self.tail.next_node is not None:
@@ -35,6 +37,7 @@ class LinkedList:
         if self.is_empty():
             self.head = node
             self.pointer = self.head
+
         else:
             if self.pointer.next_node is None:
                 self.tail = node
@@ -63,7 +66,31 @@ class LinkedList:
 
         if remove == self.pointer:
             self.pointer = tail
+
         self.tail = tail
+        self.size -= 1
+
+    def remove(self, remove: Node):
+        if self.is_empty():
+            return None
+
+        if remove == self.head:
+            if self.size == 1:
+                self.clear()
+                return None
+
+            if self.head == self.pointer:
+                self.pointer = remove.next_node
+
+            self.head = remove.next_node
+
+        else:
+            while self.pointer is not None and self.pointer.next_node != remove:
+                self.pointer = self.pointer.next_node
+
+            if self.pointer is not None:
+                self.pointer.next_node = remove.next_node
+
         self.size -= 1
 
     def next(self):
@@ -72,6 +99,7 @@ class LinkedList:
 
         if not self.pointer.next_node:
             print('다음 노드가 존재하지 않습니다.')
+
         else:
             self.pointer = self.pointer.next_node
             return self.pointer.data
