@@ -12,10 +12,12 @@ Redux는 여러 이점들이 있지만 사용하기 전에 Redux를 사용하기
 
 ## 한글 자료
 
-1. https://medium.com/@jsh901220/react%EC%97%90-redux-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0-a8e6efd745c9
+1. https://lunit.gitbook.io/redux-in-korean/ (Redux에 대한 자세한 설명들)
 
-2. https://lunit.gitbook.io/redux-in-korean/
+2. https://velog.io/@velopert/react-redux-hooks (React Hooks 사용 가이드)
 
 ## 영문 자료
 
-1. https://www.valentinog.com/blog/redux/
+1. https://www.valentinog.com/blog/redux/ (Redux 초심자 가이드)
+
+2. https://github.com/facebookincubator/redux-react-hook (React Hooks 버전)
