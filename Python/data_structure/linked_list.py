@@ -10,7 +10,9 @@ class LinkedList(object):
         self.tail = None
         self.pointer = None
         self.size = 0
-        print("데이터 초기화")
+
+    def __repr__(self):
+        return f'<LinkedList head={self.head.data} tail={self.tail.data}>'
 
     def clear(self):
         self.__init__()
@@ -22,29 +24,23 @@ class LinkedList(object):
         if self.is_empty():
             self.head = node
             self.pointer = self.head
-
         else:
             self.tail = self.head
             while self.tail.next_node is not None:
                 self.tail = self.tail.next_node
             self.tail.next_node = node
             self.tail = node
-
-        print('데이터 추가 완료')
         self.size += 1
 
     def insert(self, node: Node):
         if self.is_empty():
             self.head = node
             self.pointer = self.head
-
         else:
             if self.pointer.next_node is None:
                 self.tail = node
             node.next_node = self.pointer.next_node
             self.pointer.next_node = node
-
-        print('데이터 삽입 완료')
         self.size += 1
 
     def pop(self):
@@ -79,11 +75,7 @@ class LinkedList(object):
                 self.clear()
                 return None
 
-            if self.head == self.pointer:
-                self.pointer = remove.next_node
-
             self.head = remove.next_node
-
         else:
             while self.pointer is not None and self.pointer.next_node != remove:
                 self.pointer = self.pointer.next_node
@@ -94,29 +86,18 @@ class LinkedList(object):
         self.size -= 1
 
     def next(self):
-        if self.is_empty():
+        if self.is_empty() or not self.pointer.next_node:
+            print('다음 노드가 존재하지 않습니다.')
             return None
 
-        if not self.pointer.next_node:
-            print('다음 노드가 존재하지 않습니다.')
-
-        else:
-            self.pointer = self.pointer.next_node
-            return self.pointer.data
+        self.pointer = self.pointer.next_node
+        return self.pointer.data
 
     def move_to_head(self):
-        if self.is_empty():
-            return None
-
-        self.pointer = self.head
-        print('포인터를 첫 번째 노드로 이동했습니다.')
+        self.pointer = None if self.is_empty() else self.head
 
     def move_to_tail(self):
-        if self.is_empty():
-            return None
-
-        self.pointer = self.tail
-        print("포인터를 마지막 노드로 이동했습니다.")
+        self.pointer = None if self.is_empty() else self.tail
 
     def get_head(self):
         return self.head.data if self.head else None
