@@ -12,7 +12,7 @@ class LinkedList(object):
         self.size = 0
 
     def __repr__(self):
-        return f'<LinkedList head={self.head.data} tail={self.tail.data}>'
+        return f'<LinkedList head={self.head} tail={self.tail}>'
 
     def clear(self):
         self.__init__()
@@ -20,68 +20,75 @@ class LinkedList(object):
     def is_empty(self):
         return True if not self.size else False
 
-    def append(self, node: Node):
+    def append(self, new: Node):
         if self.is_empty():
-            self.head = node
+            self.head = new
+            self.tail = new
             self.pointer = self.head
+
         else:
             self.tail = self.head
+
             while self.tail.next_node is not None:
                 self.tail = self.tail.next_node
-            self.tail.next_node = node
-            self.tail = node
+
+            self.tail.next_node = new
+            self.tail = new
         self.size += 1
 
-    def insert(self, node: Node):
+    def insert(self, new: Node, is_head=False):
         if self.is_empty():
-            self.head = node
+            self.head = new
+            self.tail = new
             self.pointer = self.head
+
         else:
-            if self.pointer.next_node is None:
-                self.tail = node
-            node.next_node = self.pointer.next_node
-            self.pointer.next_node = node
+            if is_head:
+                new.next_node = self.head
+                self.head = new
+
+            else:
+                if self.pointer.next_node is None:
+                    self.tail = new
+
+                new.next_node = self.pointer.next_node
+                self.pointer.next_node = new
         self.size += 1
 
     def pop(self):
         if self.is_empty():
             return None
 
-        if not self.tail:
-            self.head = None
-            self.pointer = None
+        self.tail = self.head
 
-        tail = None
-        remove = self.head
+        while self.tail.next_node is not None:
+            self.pointer = self.tail
+            self.tail = self.tail.next_node
 
-        while remove.next_node is not None:
-            tail = remove
-            remove = remove.next_node
-
-        tail.next_node = None
-
-        if remove == self.pointer:
-            self.pointer = tail
-
-        self.tail = tail
-        self.size -= 1
+        try:
+            return self.pointer.next_node.data
+        finally:
+            self.pointer.next_node = None
+            self.tail = self.pointer
+            self.size -= 1
 
     def remove(self, remove: Node):
         if self.is_empty():
             return None
 
         if remove == self.head:
-            if self.size == 1:
-                self.clear()
-                return None
-
             self.head = remove.next_node
+
         else:
+            self.pointer = self.head
+
             while self.pointer is not None and self.pointer.next_node != remove:
                 self.pointer = self.pointer.next_node
 
             if self.pointer is not None:
                 self.pointer.next_node = remove.next_node
+            else:
+                self.pointer = self.head
 
         self.size -= 1
 
@@ -98,32 +105,3 @@ class LinkedList(object):
 
     def move_to_tail(self):
         self.pointer = None if self.is_empty() else self.tail
-
-    def get_head(self):
-        return self.head.data if self.head else None
-
-    def get_current(self):
-        return self.pointer.data if self.pointer else None
-
-    def get_tail(self):
-        return self.tail.data if self.tail else None
-
-    def get_size(self):
-        return self.size
-
-
-if __name__ == '__main__':
-    linked_list = LinkedList()
-    linked_list.insert(Node("Insert1"))
-    linked_list.append(Node("test1"))
-    linked_list.insert(Node("Insert2"))
-
-    linked_list.move_to_tail()
-    linked_list.append(Node("test2"))
-    linked_list.insert(Node("Insert3"))
-    linked_list.pop()
-
-    linked_list.move_to_head()
-    print(linked_list.get_current())
-    while linked_list.next():
-        print(linked_list.get_current())
