@@ -67,6 +67,8 @@ class DoublyLinkedList(object):
             temp = temp.prev
             temp.next = None
 
+        self.size -= 1
+
     @property
     def is_empty(self):
         return True if self.head is None else False
