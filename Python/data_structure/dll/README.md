@@ -1,4 +1,4 @@
-# Double Linked List
+# Doubly Linked List
 
 탐색 기능을 개선한 링크드 리스트
 
