@@ -18,5 +18,4 @@ def solution(prices: list):
             if price > p:
                 break
         answer.append(count)
-    answer[-1] = 0
     return answer
