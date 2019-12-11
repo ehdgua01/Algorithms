@@ -24,7 +24,7 @@ class DoublyLinkedList(object):
         self.size += 1
 
     def insert(self, new: Node, location: int):
-        if (location < 1) or (self.size < location):
+        if location < 1 or (self.is_empty and location != 1):
             raise ValueError('invalid location')
 
         if self.is_empty:
