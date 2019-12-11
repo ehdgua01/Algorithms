@@ -17,6 +17,7 @@ class DoublyLinkedList(object):
             self.head = new
             self.tail = new
         else:
+            self.tail.next = new
             new.prev = self.tail
             self.tail = new
 
@@ -32,10 +33,11 @@ class DoublyLinkedList(object):
         elif self.size == location:
             self.tail.next = new
             new.prev = self.tail
+            self.tail = new
         else:
             """TODO
-            location이 전체 사이즈의 절반보다 크면
-            뒤에서 작으면 앞에서 시작하는 로직 추
+            location이 전체 사이즈의 절반보다 크면 뒤에서
+            작으면 앞에서 시작하는 로직 추가
             """
             temp = self.head
             while location > 1:
