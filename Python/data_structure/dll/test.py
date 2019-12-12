@@ -77,6 +77,7 @@ class TestCase(unittest.TestCase):
         self.dll.insert(Node(4), 2)
         self.assertEqual(self.dll.get_data_at(3), 4)
         self.assertEqual(self.dll.tail.prev.data, 4)
+        # test git commit time
         self.assertEqual(self.dll.size, 4)
 
     def test_remove(self):
