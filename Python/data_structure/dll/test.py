@@ -75,7 +75,6 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.dll.size, 3)
 
         self.dll.insert(Node(4), 2)
-
         self.assertEqual(self.dll.get_data_at(3), 4)
         self.assertEqual(self.dll.tail.prev.data, 4)
         self.assertEqual(self.dll.size, 4)
@@ -86,9 +85,17 @@ class TestCase(unittest.TestCase):
         for i in range(1, 11):
             self.dll.append(Node(i))
 
-        self.assertEqual(self.dll.remove(2), 2)
+        self.dll.remove(2)
+        self.assertEqual(self.dll.get_data_at(1), 1)
         self.assertEqual(self.dll.get_data_at(2), 3)
+        self.assertEqual(self.dll.get_data_at(3), 4)
         self.assertEqual(self.dll.size, 9)
+
+        self.dll.remove(5)
+        self.assertEqual(self.dll.get_data_at(4), 5)
+        self.assertEqual(self.dll.get_data_at(5), 7)
+        self.assertEqual(self.dll.get_data_at(6), 8)
+        self.assertEqual(self.dll.size, 8)
 
 
 if __name__ == '__main__':
