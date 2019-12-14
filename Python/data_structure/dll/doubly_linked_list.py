@@ -30,15 +30,13 @@ class DoublyLinkedList(object):
         if self.is_empty:
             self.head = new
             self.tail = new
-        elif self.size == location:
-            self.tail.next = new
-            new.prev = self.tail
-            self.tail = new
         else:
             target = self.get_node_at(location)
             new.prev = target
             new.next = target.next
-            if self.tail == target.next:
+            if self.tail == target:
+                self.tail = new
+            elif self.tail == target.next:
                 self.tail.prev = new
             target.next = new
 
@@ -55,11 +53,11 @@ class DoublyLinkedList(object):
         if self.is_empty or location < 1:
             raise ValueError('List is empty')
 
-        if self.size == location:
+        target = self.get_node_at(location)
+        if self.tail == target:
             self.tail = self.tail.prev
             self.tail.next = None
         else:
-            target = self.get_node_at(location)
             target.prev.next = target.next
             target.next = None
 
