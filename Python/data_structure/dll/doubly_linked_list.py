@@ -35,17 +35,10 @@ class DoublyLinkedList(object):
             new.prev = self.tail
             self.tail = new
         else:
-            """TODO
-            location이 전체 사이즈의 절반보다 크면 뒤에서
-            작으면 앞에서 시작하는 로직 추가
-            """
-            temp = self.head
-            while location > 1:
-                temp = temp.next
-                location -= 1
-            new.next = temp.next
-            new.prev = temp
-            temp.next = new
+            target = self.get_node_at(location)
+            new.prev = target
+            new.next = target.next
+            target.next = new
 
         self.size += 1
 
@@ -64,21 +57,14 @@ class DoublyLinkedList(object):
             self.tail = self.tail.prev
             self.tail.next = None
         else:
-            """TODO
-            location이 전체 사이즈의 절반보다 크면
-            뒤에서 작으면 앞에서 시작하는 로직 추
-            """
-            temp = self.head
-            while location > 1:
-                temp = temp.next
-                location -= 1
-            temp.prev.next = temp.next
-            temp.next = None
+            target = self.get_node_at(location)
+            target.prev.next = target.next
+            target.next = None
 
         self.size -= 1
 
-    def get_data_at(self, location):
-        if self.is_empty or (self.size < location) or (location < 1):
+    def get_node_at(self, location):
+        if (location < 1) or self.is_empty or (self.size < location):
             raise ValueError('Invalid location')
 
         if int(self.size / 2) < location:
@@ -92,7 +78,13 @@ class DoublyLinkedList(object):
                 target = target.next
                 location -= 1
 
-        return target.data
+        return target
+
+    def get_data_at(self, location):
+        if (location < 1) or self.is_empty or (self.size < location):
+            raise ValueError('Invalid location')
+
+        return self.get_node_at(location).data
 
     @property
     def is_empty(self):

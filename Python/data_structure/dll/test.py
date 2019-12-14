@@ -63,21 +63,17 @@ class TestCase(unittest.TestCase):
 
         self.dll.insert(Node(2), 1)
         self.assertEqual(self.dll.head.data, 1)
-        self.assertEqual(self.dll.head.next.data, 2)
         self.assertEqual(self.dll.tail.data, 2)
         self.assertEqual(self.dll.size, 2)
 
-        self.dll.insert(Node(3), 2)
-        self.assertEqual(self.dll.get_data_at(2), 2)
-        self.assertEqual(self.dll.head.next.data, 2)
-        self.assertEqual(self.dll.tail.prev.data, 2)
-        self.assertEqual(self.dll.tail.data, 3)
+        self.dll.insert(Node(3), 1)
+        self.assertEqual(self.dll.get_data_at(2), 3)
+        self.assertEqual(self.dll.tail.data, 2)
         self.assertEqual(self.dll.size, 3)
 
         self.dll.insert(Node(4), 2)
         self.assertEqual(self.dll.get_data_at(3), 4)
         self.assertEqual(self.dll.tail.prev.data, 4)
-        # test git commit time
         self.assertEqual(self.dll.size, 4)
 
     def test_remove(self):
