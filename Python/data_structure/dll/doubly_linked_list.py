@@ -38,6 +38,8 @@ class DoublyLinkedList(object):
             target = self.get_node_at(location)
             new.prev = target
             new.next = target.next
+            if self.tail == target.next:
+                self.tail.prev = new
             target.next = new
 
         self.size += 1
