@@ -10,7 +10,7 @@
 특정 위치의 데이터를 검색하는 데에는 O(n)의 시간이 걸린다는 단점이 있다.
 
 ## 종류
-- 단인 연결 리스트(singly linked list)
+- 단일 연결 리스트(singly linked list)
 - 이중 연결 리스트(doubly linked list)
 - 원형 연결 리스트(circular linked list)
 
