@@ -11,18 +11,20 @@ class CircularLinkedList(object):
         self.tail = None
         self.size = 0
 
+    def init(self, new: Node):
+        self.head = new
+        self.tail = new
+        self.head.prev = self.tail
+        self.tail.next = self.head
+
     def append(self, new: Node):
         if self.is_empty:
-            self.head = new
-            self.tail = new
-            self.head.prev = self.tail
-            self.tail.next = self.head
+            self.init(new)
         else:
             self.tail.next = new
             new.prev = self.tail
             self.tail = new
             self.tail.next = self.head
-
         self.size += 1
 
     @property
