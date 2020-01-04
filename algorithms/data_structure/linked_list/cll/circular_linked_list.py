@@ -11,26 +11,27 @@ class CircularLinkedList(object):
         self.tail = None
         self.size = 0
 
-    def connect_head_tail(self):
+    def connect_head_tail(self, node: Node = None):
+        if node:
+            self.head = node
+            self.tail = node
+
         self.head.prev = self.tail
         self.tail.next = self.head
 
     def append(self, new: Node):
         if self.is_empty:
-            self.head = new
-            self.tail = new
+            self.connect_head_tail(new)
         else:
             self.tail.next = new
             new.prev = self.tail
             self.tail = new
-        self.connect_head_tail()
+            self.connect_head_tail()
         self.size += 1
 
     def insert(self, new: Node, location: int):
         if self.is_empty:
-            self.head = new
-            self.tail = new
-            self.connect_head_tail()
+            self.connect_head_tail(new)
         else:
             target = self.get_node_at(location)
             new.prev = target
@@ -62,7 +63,7 @@ class CircularLinkedList(object):
             target.next = None
         self.size -= 1
 
-    def get_node_at(self, location: int):
+    def get_node_at(self, location: int) -> Node:
         if (location < 1) or self.is_empty or (self.size < location):
             raise ValueError('Invalid location')
 
@@ -83,5 +84,5 @@ class CircularLinkedList(object):
         return self.get_node_at(location).data
 
     @property
-    def is_empty(self):
+    def is_empty(self) -> bool:
         return True if self.head is None else False
