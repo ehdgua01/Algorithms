@@ -81,6 +81,9 @@ class CircularLinkedList(object):
 
         return target
 
+    def get_data_at(self, location: int):
+        return self.get_node_at(location).data
+
     @property
     def is_empty(self):
         return True if self.head is None else False
