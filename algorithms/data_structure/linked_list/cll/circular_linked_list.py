@@ -19,13 +19,11 @@ class CircularLinkedList(object):
         if self.is_empty:
             self.head = new
             self.tail = new
-            self.connect_head_tail()
         else:
             self.tail.next = new
             new.prev = self.tail
             self.tail = new
-            self.tail.next = self.head
-
+        self.connect_head_tail()
         self.size += 1
 
     def insert(self, new: Node, location: int):
