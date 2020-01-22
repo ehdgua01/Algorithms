@@ -55,9 +55,11 @@ class DoublyLinkedList(object):
         if self.tail == target:
             self.tail = self.tail.prev
             self.tail.next = None
-        else:
+        elif target.prev is not None:
             target.prev.next = target.next
-            target.next = None
+
+        if location == 1:
+            self.head = self.head.next
 
         self.size -= 1
 

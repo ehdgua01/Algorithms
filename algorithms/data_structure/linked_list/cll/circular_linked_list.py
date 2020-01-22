@@ -58,9 +58,13 @@ class CircularLinkedList(object):
         if self.tail == target:
             self.tail = self.tail.prev
             self.connect_head_tail()
-        else:
+        elif target.prev is not None:
             target.prev.next = target.next
-            target.next = None
+
+        if location == 1:
+            self.head = self.head.next
+            self.connect_head_tail()
+
         self.size -= 1
 
     def get_node_at(self, location: int) -> Node:

@@ -94,6 +94,10 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.dll.get_data_at(6), 8)
         self.assertEqual(self.dll.size, 8)
 
+        self.dll.remove(1)
+        self.assertEqual(self.dll.get_data_at(1), 3)
+        self.assertEqual(self.dll.size, 7)
+
 
 if __name__ == '__main__':
     unittest.main()

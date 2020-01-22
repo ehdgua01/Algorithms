@@ -82,13 +82,19 @@ class TestCase(unittest.TestCase):
         for i in range(1, 11):
             self.cll.append(Node(i))
 
-        self.assertEqual(self.cll.get_data_at(3), 3)
         self.cll.remove(3)
         self.assertEqual(self.cll.get_data_at(3), 4)
-
         self.assertEqual(self.cll.tail.data, 10)
+        self.assertEqual(self.cll.size, 9)
+
         self.cll.remove(9)
+        self.assertEqual(self.cll.get_data_at(8), 9)
         self.assertEqual(self.cll.tail.data, 9)
+        self.assertEqual(self.cll.size, 8)
+
+        self.cll.remove(1)
+        self.assertEqual(self.cll.head.prev, self.cll.tail)
+        self.assertEqual(self.cll.head.data, 2)
 
 
 if __name__ == '__main__':
