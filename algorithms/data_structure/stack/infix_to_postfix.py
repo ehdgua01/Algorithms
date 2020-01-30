@@ -12,7 +12,7 @@ OPERATOR = {
 
 
 def is_number(token: str) -> bool:
-    result = re.fullmatch(r'([0-9]|\.|-)+', token)
+    result = re.fullmatch(r'^(-)?[0-9]+(\.[0-9]+)?', token)
     return False if result is None else True
 
 
@@ -37,6 +37,8 @@ def infix_to_postfix(expression: str) -> list:
                 postfix.append(top_op)
                 top_op = operator_stack.pop()
         else:
+            if token not in OPERATOR:
+                raise Exception('허용되지 않은 연산자입니다.')
             while (
                     not operator_stack.is_empty
                     and OPERATOR[operator_stack.peek()] >= OPERATOR[token]
