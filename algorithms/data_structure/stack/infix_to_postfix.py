@@ -11,12 +11,12 @@ OPERATOR = {
 }
 
 
-def is_number(token: str):
-    result = re.fullmatch(r'([0-9]|\.)+', token)
+def is_number(token: str) -> bool:
+    result = re.fullmatch(r'([0-9]|\.|-)+', token)
     return False if result is None else True
 
 
-def infix_to_postfix(expression: str):
+def infix_to_postfix(expression: str) -> list:
     postfix = []
     operator_stack = Stack()
 
@@ -54,6 +54,3 @@ def infix_to_postfix(expression: str):
         postfix.append(operator_stack.pop())
 
     return postfix
-
-
-print(infix_to_postfix('1 + ( 2 * 123 * 2323 + 999 ) * 123 + 1'))
