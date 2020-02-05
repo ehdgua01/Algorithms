@@ -30,6 +30,7 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.queue.get(), 3)
         self.assertEqual(self.queue.front, 3)
         self.assertEqual(self.queue.is_empty, True)
+        self.assertRaises(Exception, self.queue.get)
 
 
 if __name__ == '__main__':
