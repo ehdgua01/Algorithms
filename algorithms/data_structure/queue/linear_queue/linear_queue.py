@@ -5,7 +5,7 @@ class LinearQueue(object):
         self.rear = 0
         self.queue = [None] * capacity
 
-    def put(self, value):
+    def put(self, value) -> None:
         if self.is_full:
             """앞에 공간이 남아있지만,
             후단이 맨 뒤에 위치해 있으므로 오류 발생"""
@@ -23,11 +23,11 @@ class LinearQueue(object):
         return value
 
     @property
-    def is_empty(self):
+    def is_empty(self) -> bool:
         return self.front == self.rear
 
     @property
-    def is_full(self):
+    def is_full(self) -> bool:
         return (
             False if self.is_empty
             else self.rear == self.capacity
