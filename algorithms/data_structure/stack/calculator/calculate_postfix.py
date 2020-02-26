@@ -1,7 +1,6 @@
 import operator
 
 from stack import Stack, Node
-from infix_to_postfix import infix_to_postfix, is_number
 
 __OPERATOR = {
     '+': operator.add,
