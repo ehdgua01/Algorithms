@@ -1,6 +1,3 @@
-import json
-
-
 class Node(object):
     def __init__(self, value) -> None:
         self.child = None
@@ -29,13 +26,15 @@ def destroy(root: Node) -> None:
     root.child = None
 
 
-def print_tree(node: Node, depth=0) -> None:
-    print('{indent}{value}'.format(
-        indent='- '.join([''] * (depth + 1)),
-        value=node.value,
-    ))
+def print_tree(node: Node) -> dict:
+    result = {}
 
     if node.child:
-        print_tree(node.child, depth + 1)
+        result[node.value] = print_tree(node.child)
+    else:
+        result[node.value] = 'last'
+
     if node.sibling:
-        print_tree(node.sibling, depth)
+        result.update(print_tree(node.sibling))
+
+    return result

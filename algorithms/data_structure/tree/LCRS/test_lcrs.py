@@ -27,18 +27,23 @@ class TestCase(unittest.TestCase):
 
         append(node_b, node_d)
         self.assertEqual(node_b.child.sibling.value, 'D')
-        self.assertEqual(self.root.child.sibling.child.sibling.value, 'D')
+        self.assertEqual(
+            self.root.child.sibling.child.sibling.value, 'D'
+        )
 
         append(node_a, node_e)
-        print_tree(self.root)
-        """
-        Root
-        - A
-        - - E
-        - B
-        - - C
-        - - D
-        """
+        tree = print_tree(self.root)
+        self.assertEqual(tree, {
+            "Root": {
+                "A": {
+                    "E": "last",
+                },
+                "B": {
+                    "C": "last",
+                    "D": "last",
+                },
+            },
+        })
 
         destroy(self.root)
         self.assertIsNone(self.root.child)
