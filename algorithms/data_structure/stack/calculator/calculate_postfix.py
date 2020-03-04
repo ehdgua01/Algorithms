@@ -1,12 +1,12 @@
 import operator
 
-from stack import Stack, Node
+from ..stack import Stack, Node
 
 __OPERATOR = {
     '+': operator.add,
     '-': operator.sub,
     '*': operator.mul,
-    '/': operator.floordiv
+    '/': operator.floordiv,
 }
 
 

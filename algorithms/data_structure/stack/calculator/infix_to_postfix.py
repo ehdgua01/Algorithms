@@ -1,6 +1,6 @@
 import re
 
-from stack import Stack, Node
+from algorithms.data_structure.stack.stack import Stack, Node
 
 OPERATOR = {
     '*': 3,

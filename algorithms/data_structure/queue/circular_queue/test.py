@@ -1,6 +1,6 @@
 import unittest
 
-from circular_queue import CircularQueue
+from .circular_queue import CircularQueue
 
 
 class TestCase(unittest.TestCase):

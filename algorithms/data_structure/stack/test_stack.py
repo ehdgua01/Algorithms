@@ -1,5 +1,6 @@
 import unittest
-from stack import Stack, Node
+
+from .stack import Stack, Node
 
 
 class TestCase(unittest.TestCase):

@@ -1,6 +1,6 @@
 import unittest
 
-from linked_queue import LinkedQueue, Node
+from .linked_queue import LinkedQueue, Node
 
 
 class TestCase(unittest.TestCase):

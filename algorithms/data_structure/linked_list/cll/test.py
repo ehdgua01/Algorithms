@@ -1,6 +1,6 @@
 import unittest
 
-from circular_linked_list import CircularLinkedList, Node
+from .circular_linked_list import CircularLinkedList, Node
 
 
 class TestCase(unittest.TestCase):

@@ -1,6 +1,6 @@
 import unittest
 
-from linear_queue import LinearQueue
+from .linear_queue import LinearQueue
 
 
 class TestCase(unittest.TestCase):

@@ -1,6 +1,6 @@
 import unittest
 
-from calculator import infix_to_postfix, calculate_postfix
+from .calculator import infix_to_postfix, calculate_postfix
 
 
 class TestCase(unittest.TestCase):

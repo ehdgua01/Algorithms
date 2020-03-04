@@ -1,5 +1,6 @@
 import unittest
-from solution import solution
+
+from .solution import solution
 
 
 class TestCase(unittest.TestCase):
