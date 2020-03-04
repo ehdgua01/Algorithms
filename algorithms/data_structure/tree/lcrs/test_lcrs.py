@@ -7,7 +7,7 @@ class TestCase(unittest.TestCase):
     def setUp(self) -> None:
         self.root = Node('Root')
 
-    def test_lcrs(self):
+    def test_lcrs(self) -> None:
         node_a = Node('A')
         node_b = Node('B')
         node_c = Node('C')
