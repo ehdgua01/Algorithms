@@ -18,8 +18,7 @@ def calculate_postfix(postfix: list):
             try:
                 result_stack.push(Node(int(token)))
             except ValueError:
-                """10진수 정수가 아닌 경우
-                """
+                # 10진수 정수가 아닌 경우
                 result_stack.push(Node(float(token)))
         except ValueError:
             if token in __OPERATOR:

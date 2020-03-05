@@ -11,8 +11,8 @@ OPERATOR = {
 }
 
 
-def is_number(token: str) -> bool:
-    result = re.fullmatch(r'^(-)?[0-9]+(\.[0-9]+)?', token)
+def is_number(value: str) -> bool:
+    result = re.fullmatch(r'^(-)?[0-9]+(\.[0-9]+)?', value)
     return False if result is None else True
 
 

@@ -9,7 +9,6 @@ class TestCase(unittest.TestCase):
             infix_to_postfix('1 + 2 + 3'),
             ['1', '2', '+', '3', '+'],
         )
-
         self.assertEqual(
             infix_to_postfix('1 + ( 2 * 123 * 2323 + 999 ) * 123 + 1'),
             ['1', '2', '123', '*', '2323', '*', '999', '+', '123', '*', '+', '1', '+'],
