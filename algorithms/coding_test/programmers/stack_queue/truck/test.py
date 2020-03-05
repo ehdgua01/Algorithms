@@ -4,7 +4,7 @@ from .solution import solution
 
 
 class UnitTest(unittest.TestCase):
-    def test_solution(self):
+    def test_solution(self) -> None:
         self.assertEqual(
             solution(
                 bridge_length=2,

@@ -6,7 +6,7 @@ https://programmers.co.kr/learn/courses/30/lessons/42583
 from collections import deque
 
 
-def solution(bridge_length, weight, truck_weights: list):
+def solution(bridge_length: int, weight: int, truck_weights: list) -> None:
     answer = 0
     elapsed = 0
     truck_weights = deque(truck_weights)
