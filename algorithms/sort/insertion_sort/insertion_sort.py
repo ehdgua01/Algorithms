@@ -3,9 +3,8 @@ def insertion_sort(data: list) -> list:
         if data[i - 1] < data[i]:
             continue
 
-        value = data[i]
         for j in range(i):
-            if value < data[j]:
+            if data[i] < data[j]:
                 data.insert(j, data.pop(i))
                 break
     return data
