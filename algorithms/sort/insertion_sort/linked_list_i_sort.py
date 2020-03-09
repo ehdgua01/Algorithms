@@ -36,7 +36,8 @@ class NodeIterator(object):
             current = self.current
             self.current = self.current.next
             return current
-        raise StopIteration
+        else:
+            raise StopIteration
 
 
 def linked_list_i_sort(data: Node) -> Node:

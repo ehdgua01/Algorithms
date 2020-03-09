@@ -1,10 +1,10 @@
 import unittest
 
 from .quick_sort import quick_sort
-from .shuffle_quick_sort import shuffle_quick_sort
-from .random_pivot_quick_sort import random_pivot_quick_sort
-from .median_of_three_quick_sort import median_of_three_quick_sort
-from .stack_quick_sort import stack_quick_sort
+from .shuffle import shuffle_quick_sort
+from .random_pivot import random_pivot_quick_sort
+from .median_of_three import median_of_three_quick_sort
+from .stack import stack_quick_sort
 
 
 class TestCase(unittest.TestCase):
