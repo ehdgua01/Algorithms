@@ -4,6 +4,7 @@ from .quick_sort import quick_sort
 from .shuffle_quick_sort import shuffle_quick_sort
 from .random_pivot_quick_sort import random_pivot_quick_sort
 from .median_of_three_quick_sort import median_of_three_quick_sort
+from .stack_quick_sort import stack_quick_sort
 
 
 class TestCase(unittest.TestCase):
@@ -24,4 +25,8 @@ class TestCase(unittest.TestCase):
 
     def test_median_of_three_quick_sort(self):
         median_of_three_quick_sort(self.data, 0, len(self.data) - 1)
+        self.assertEqual(self.data, [1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+    def test_stack_quick_sort(self):
+        stack_quick_sort(self.data)
         self.assertEqual(self.data, [1, 2, 3, 4, 5, 6, 7, 8, 9])
