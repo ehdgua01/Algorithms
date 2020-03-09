@@ -5,23 +5,23 @@ from .move_to_front import (
     move_to_front, linked_list_move_to_front,
     Node,
 )
+from .transpose import transpose_linear_search
 
 
 class TestCase(unittest.TestCase):
-    def test_linear_search(self):
-        self.assertEqual(
-            linear_search([1, 2, 3], 2),
-            2,
-        )
+    def setUp(self) -> None:
+        self.data = [1, 5, 4, 6, 2, 3]
 
-    def test_move_to_front(self):
-        data = [1, 2, 3]
-        result = move_to_front(data, 3)
+    def test_linear_search(self) -> None:
+        self.assertEqual(linear_search(self.data, 2), 2)
+
+    def test_move_to_front(self) -> None:
+        result = move_to_front(self.data, 3)
         self.assertEqual(result, 3)
-        self.assertEqual(data[0], 3)
-        self.assertEqual(data[1], 1)
+        self.assertEqual(self.data[0], 3)
+        self.assertEqual(self.data[1], 1)
 
-    def test_linked_list_move_to_front(self):
+    def test_linked_list_move_to_front(self) -> None:
         a = Node('A')
         b = Node('B')
         c = Node('C')
@@ -38,3 +38,12 @@ class TestCase(unittest.TestCase):
         self.assertEqual(head.value, 'B')
         self.assertEqual(head.next, c)
         self.assertEqual(c.next, a)
+
+    def test_transpose(self) -> None:
+        self.assertEqual(self.data[3], 6)
+        result = transpose_linear_search(self.data, 6)
+        self.assertEqual(result, 6)
+        self.assertEqual(self.data[2], 6)
+
+        transpose_linear_search(self.data, 6)
+        self.assertEqual(self.data[1], 6)
