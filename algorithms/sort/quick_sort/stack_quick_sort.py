@@ -4,13 +4,13 @@
 
 
 class Node(object):
-    def __init__(self, data):
+    def __init__(self, data) -> None:
         self.data = data
         self.next = None
 
 
 class Stack(object):
-    def __init__(self):
+    def __init__(self) -> None:
         self.top = None
         self.size = 0
 
@@ -22,7 +22,7 @@ class Stack(object):
         self.size -= 1
         return data
 
-    def push(self, new: Node):
+    def push(self, new: Node) -> None:
         if not isinstance(new, Node):
             raise TypeError('Not node type')
         if self.is_empty:
@@ -36,7 +36,7 @@ class Stack(object):
         return None if self.is_empty else self.top.data
 
     @property
-    def is_empty(self):
+    def is_empty(self) -> bool:
         return self.top is None
 
 
@@ -59,7 +59,7 @@ def partition(data: list, left: int, right: int):
     return lessor
 
 
-def stack_quick_sort(data: list):
+def stack_quick_sort(data: list) -> None:
     lesser = 0
     greater = len(data) - 1
     s = Stack()
