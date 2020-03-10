@@ -66,7 +66,7 @@ class BinarySearchTree(object):
             return None
         else:
             if collection.value == target:
-                return collection.value
+                return collection
             elif collection.value < target:
                 return self.search(
                     target,
@@ -78,35 +78,35 @@ class BinarySearchTree(object):
                     collection=collection.left,
                 )
 
-    def remove(self, target, /, collection=None):
-        if self.is_empty or collection is None:
+    def remove(self, target, /):
+        if self.is_empty:
+            return None
+
+        collection = self.search(
+            target,
+            collection=self.root,
+        )
+
+        if collection is None:
             return None
         else:
-            if collection.value < target:
-                self.remove(
-                    target,
-                    collection=collection.right,
-                )
-            elif collection.value > target:
-                self.remove(
-                    target,
-                    collection=collection.left,
-                )
-            else:
-                self.__remove(collection, collection.parent)
+            self.__remove(collection, collection.parent)
 
     def __remove(self, collection: Node, parent, /):
         temp = None
-        if collection.right:
+        if collection.right and collection.left:
             temp = self.get_min(collection.right)
             self.__remove(temp, temp.parent)
-            if collection.left:
-                temp.left = collection.left
-                collection.left.parent = temp
+            temp.left = collection.left
+            temp.right = collection.right
+        elif collection.right:
+            temp = collection.right
         elif collection.left:
             temp = collection.left
+
         if temp:
             temp.parent = parent
+
         if parent:
             is_left = parent.left == collection
             if is_left:

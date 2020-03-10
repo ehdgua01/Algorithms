@@ -51,25 +51,51 @@ class TestCase(unittest.TestCase):
         self.assertIsNone(bst.search('H'))
         self.assertEqual(
             bst.search('G', collection=bst.root),
-            'G',
+            g,
         )
         self.assertEqual(
             bst.search('D', collection=bst.root),
-            'D',
+            d,
         )
         self.assertEqual(
             bst.search('C', collection=bst.root),
-            'C',
+            c,
         )
 
+        # 제거 알고리즘 테스트
         """
+        서브 트리 노드 제거 테스트
              D
            /  \
           B    G
          / \  /
         A  C E
         """
-
-        bst.remove('F', collection=bst.root)
+        bst.remove('F')
         self.assertEqual(bst.root.right, g)
         self.assertEqual(bst.root.right.left, e)
+
+        """
+        루트 노드 제거 테스트
+             E
+           /  \
+          B    G
+         / \
+        A  C
+        """
+        bst.remove('D')
+        self.assertEqual(bst.root, e)
+        self.assertEqual(bst.root.right, g)
+        self.assertEqual(bst.root.left, b)
+
+        """
+        잎 노드 제거 테스트
+             E
+           /  \
+          B    G
+         /
+        A 
+        """
+        bst.remove('C')
+        self.assertIsNone(bst.root.left.right)
+        self.assertEqual(bst.root.left, b)
