@@ -22,6 +22,14 @@ class TestCase(unittest.TestCase):
         )
 
     def test_binary_search_tree(self):
+        """
+             D
+           /  \
+          B    F
+         / \  / \
+        A  C E  G
+        """
+        bst = BinarySearchTree()
         a = Node('A')
         b = Node('B')
         c = Node('C')
@@ -30,7 +38,7 @@ class TestCase(unittest.TestCase):
         f = Node('F')
         g = Node('G')
 
-        bst = BinarySearchTree()
+        # 삽입 알고리즘 테스트
         bst.insert(d)
         self.assertEqual(bst.root, d)
 
@@ -49,6 +57,7 @@ class TestCase(unittest.TestCase):
         bst.insert(g)
         self.assertEqual(bst.root.right.right, g)
 
+        # 탐색 알고리즘 테스트
         self.assertIsNone(bst.search('H'))
         self.assertEqual(bst.search('G', collection=bst.root), 'G')
         self.assertEqual(bst.search('D', collection=bst.root), 'D')
