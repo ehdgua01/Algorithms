@@ -1,6 +1,7 @@
 import unittest
 
 from .binary_search import binary_search
+from .binary_search_tree import Node, BinarySearchTree
 
 
 class TestCase(unittest.TestCase):
@@ -19,3 +20,31 @@ class TestCase(unittest.TestCase):
             binary_search(self.data, len(self.data), 13),
             13,
         )
+
+    def test_binary_search_tree(self):
+        a = Node('A')
+        b = Node('B')
+        c = Node('C')
+        d = Node('D')
+        e = Node('E')
+        f = Node('F')
+        g = Node('G')
+
+        bst = BinarySearchTree()
+        bst.insert(d)
+        self.assertEqual(bst.root, d)
+
+        bst.insert(b)
+        self.assertEqual(bst.root.left, b)
+        bst.insert(f)
+        self.assertEqual(bst.root.right, f)
+
+        bst.insert(a)
+        self.assertEqual(bst.root.left.left, a)
+        bst.insert(e)
+        self.assertEqual(bst.root.right.left, e)
+
+        bst.insert(c)
+        self.assertEqual(bst.root.left.right, c)
+        bst.insert(g)
+        self.assertEqual(bst.root.right.right, g)
