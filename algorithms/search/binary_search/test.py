@@ -1,7 +1,6 @@
 import unittest
 
 from .binary_search import binary_search
-from .binary_search_tree import Node, BinarySearchTree
 
 
 class TestCase(unittest.TestCase):
@@ -13,6 +12,13 @@ class TestCase(unittest.TestCase):
         ]
 
     def test_binary_search(self):
+        self.assertRaises(
+            Exception,
+            binary_search,
+            data=[1, 3, 2],
+            size=3,
+            target=2,
+        )
         self.assertIsNone(
             binary_search(self.data, len(self.data), 21)
         )
@@ -20,45 +26,3 @@ class TestCase(unittest.TestCase):
             binary_search(self.data, len(self.data), 13),
             13,
         )
-
-    def test_binary_search_tree(self):
-        """
-             D
-           /  \
-          B    F
-         / \  / \
-        A  C E  G
-        """
-        bst = BinarySearchTree()
-        a = Node('A')
-        b = Node('B')
-        c = Node('C')
-        d = Node('D')
-        e = Node('E')
-        f = Node('F')
-        g = Node('G')
-
-        # 삽입 알고리즘 테스트
-        bst.insert(d)
-        self.assertEqual(bst.root, d)
-
-        bst.insert(b)
-        self.assertEqual(bst.root.left, b)
-        bst.insert(f)
-        self.assertEqual(bst.root.right, f)
-
-        bst.insert(a)
-        self.assertEqual(bst.root.left.left, a)
-        bst.insert(e)
-        self.assertEqual(bst.root.right.left, e)
-
-        bst.insert(c)
-        self.assertEqual(bst.root.left.right, c)
-        bst.insert(g)
-        self.assertEqual(bst.root.right.right, g)
-
-        # 탐색 알고리즘 테스트
-        self.assertIsNone(bst.search('H'))
-        self.assertEqual(bst.search('G', collection=bst.root), 'G')
-        self.assertEqual(bst.search('D', collection=bst.root), 'D')
-        self.assertEqual(bst.search('C', collection=bst.root), 'C')
