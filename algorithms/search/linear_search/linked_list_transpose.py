@@ -23,12 +23,12 @@ class NodeIterator(object):
             raise StopIteration
 
 
-def linked_list_transpose(head: Node, match):
+def linked_list_transpose(head: Node, target):
     prev = None
     pprev = None
 
     for node in head:
-        if node.value == match:
+        if node.value == target:
             if prev:
                 if pprev:
                     pprev.next = node

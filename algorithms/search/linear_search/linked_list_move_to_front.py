@@ -23,11 +23,11 @@ class NodeIterator(object):
             raise StopIteration
 
 
-def linked_list_move_to_front(head: Node, match):
+def linked_list_move_to_front(head: Node, target):
     prev = None
 
     for node in head:
-        if node.value == match:
+        if node.value == target:
             if prev:
                 prev.next = node.next
                 node.next = head
