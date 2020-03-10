@@ -13,31 +13,45 @@ class BinarySearchTree(object):
         if self.is_empty:
             self.root = node
         else:
-            index = self.find_index(node)
+            index = self.find_index(node, collection=self.root)
 
             if index.value < node.value:
                 index.right = node
             else:
                 index.left = node
 
-    def find_index(self, x: Node, /, root=None):
+    def search(self, target, /, collection=None):
         if self.is_empty:
             return None
         else:
-            if root is None:
-                root = self.root
+            if collection is None:
+                return None
 
-            if root.value < x.value:
-                if root.right:
-                    root = root.right
-                else:
-                    return root
+            if collection.value == target:
+                return collection.value
+            elif collection.value < target:
+                return self.search(target, collection=collection.right)
             else:
-                if root.left:
-                    root = root.left
+                return self.search(target, collection=collection.left)
+
+    def find_index(self, target: Node, /, collection=None):
+        if self.is_empty:
+            return None
+        else:
+            if collection is None:
+                return None
+
+            if collection.value < target.value:
+                if collection.right:
+                    collection = collection.right
                 else:
-                    return root
-            return self.find_index(x, root)
+                    return collection
+            else:
+                if collection.left:
+                    collection = collection.left
+                else:
+                    return collection
+            return self.find_index(target, collection=collection)
 
     @property
     def is_empty(self):

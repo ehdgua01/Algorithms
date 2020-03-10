@@ -48,3 +48,8 @@ class TestCase(unittest.TestCase):
         self.assertEqual(bst.root.left.right, c)
         bst.insert(g)
         self.assertEqual(bst.root.right.right, g)
+
+        self.assertIsNone(bst.search('H'))
+        self.assertEqual(bst.search('G', collection=bst.root), 'G')
+        self.assertEqual(bst.search('D', collection=bst.root), 'D')
+        self.assertEqual(bst.search('C', collection=bst.root), 'C')
