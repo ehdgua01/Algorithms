@@ -81,4 +81,4 @@ class MaxHeap(object):
 
     @property
     def is_empty(self) -> bool:
-        return self.size < 0
+        return self.size < 1

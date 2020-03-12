@@ -18,6 +18,7 @@ class MinHeap(object):
     def remove_min(self):
         if self.is_empty:
             return
+
         self.__swap(0, -1)
         result = self.data.pop()
         current = 0
@@ -80,4 +81,4 @@ class MinHeap(object):
 
     @property
     def is_empty(self) -> bool:
-        return self.size < 0
+        return self.size < 1
