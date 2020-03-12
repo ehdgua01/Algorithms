@@ -1,7 +1,7 @@
 import math
 
 
-class MinHeap(object):
+class MaxHeap(object):
     def __init__(self):
         self.data = []
 
@@ -10,14 +10,15 @@ class MinHeap(object):
         current = self.size - 1
         parent = self.__get_parent(current)
 
-        while current > 0 and self.data[current] < self.data[parent]:
+        while current > 0 and self.data[current] > self.data[parent]:
             self.__swap(current, parent)
             current = parent
             self.__get_parent(current)
 
-    def remove_min(self):
+    def remove_max(self):
         if self.is_empty:
             return
+
         self.__swap(0, -1)
         result = self.data.pop()
         current = 0
@@ -27,10 +28,10 @@ class MinHeap(object):
         while left or right:
             if left and right:
                 if (
-                        self.data[left] < self.data[current]
-                        or self.data[right] < self.data[current]
+                        self.data[current] < self.data[left]
+                        or self.data[current] < self.data[right]
                 ):
-                    if self.data[left] <= self.data[right]:
+                    if self.data[right] <= self.data[left]:
                         self.__swap(current, left)
                         current = left
                     else:
@@ -38,10 +39,10 @@ class MinHeap(object):
                         current = right
                 else:
                     break
-            elif left and self.data[left] < self.data[current]:
+            elif left and self.data[current] < self.data[left]:
                 self.__swap(current, left)
                 current = left
-            elif right and self.data[right] < self.data[current]:
+            elif right and self.data[current] < self.data[right]:
                 self.__swap(current, right)
                 current = right
             else:
