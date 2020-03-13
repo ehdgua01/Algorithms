@@ -11,7 +11,7 @@ class DivisionMethodHashTable(object):
 
     def __getitem__(self, key: int):
         if isinstance(key, int):
-            return self._data[key % self._size]
+            return self._data[self.hash(key)]
         else:
             raise TypeError
 
