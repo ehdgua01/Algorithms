@@ -1,17 +1,17 @@
 class DivisionMethodHashTable(object):
     def __init__(self, initial_size: int) -> None:
         self._size = initial_size
-        self.data = [None] * initial_size
+        self._data = [None] * self._size
 
     def __setitem__(self, key: int, value) -> None:
         key = self.hash(key)
 
         if self[key] != value:
-            self.data[key] = value
+            self._data[key] = value
 
     def __getitem__(self, key: int):
         if isinstance(key, int):
-            return self.data[key % self._size]
+            return self._data[key % self._size]
         else:
             raise TypeError
 
@@ -39,11 +39,11 @@ class DivisionMethodHashTable(object):
 
         temp = {
             key: value
-            for key, value in enumerate(self.data)
+            for key, value in enumerate(self._data)
             if value is not None
         }
         self._size = self.next_prime(new_size)
-        self.data = [None] * self._size
+        self._data = [None] * self._size
 
         for k, v in temp.items():
             self.__set(k, v)
