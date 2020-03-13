@@ -6,7 +6,7 @@ class DivisionMethodHashTable(object):
     def __setitem__(self, key: int, value) -> None:
         key = self.hash(key)
 
-        if self[key] != value:
+        if self._data[key] != value:
             self._data[key] = value
 
     def __getitem__(self, key: int):
