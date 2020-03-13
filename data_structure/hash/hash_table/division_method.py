@@ -1,4 +1,4 @@
-class HashTable(object):
+class DivisionMethodHashTable(object):
     def __init__(self, initial_size: int) -> None:
         self._size = initial_size
         self.data = [None] * initial_size
@@ -10,10 +10,10 @@ class HashTable(object):
             self.data[key] = value
 
     def __getitem__(self, key: int):
-        if not isinstance(key, int):
-            raise TypeError
-        else:
+        if isinstance(key, int):
             return self.data[key % self._size]
+        else:
+            raise TypeError
 
     def hash(self, value: int) -> int:
         value = value if value != 0 else self._size

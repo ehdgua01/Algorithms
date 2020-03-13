@@ -1,11 +1,11 @@
 import unittest
 
-from .hash_table import HashTable
+from .division_method import DivisionMethodHashTable
 
 
 class TestCase(unittest.TestCase):
     def test_hash_table(self) -> None:
-        hash_table = HashTable(1)
+        hash_table = DivisionMethodHashTable(1)
         hash_table[0] = 1
         self.assertEqual(hash_table[0], 1)
 
