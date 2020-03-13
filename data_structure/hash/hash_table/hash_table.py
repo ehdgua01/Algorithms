@@ -2,7 +2,6 @@ class HashTable(object):
     def __init__(self, initial_size: int) -> None:
         self._size = initial_size
         self.data = [None] * initial_size
-        self.keys = [None] * initial_size
 
     def __setitem__(self, key: int, value) -> None:
         key = self.hash(key)
