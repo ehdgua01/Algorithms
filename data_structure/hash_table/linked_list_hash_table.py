@@ -6,7 +6,7 @@ class Node(object):
 
 
 class LinkedListHashTable(object):
-    def __init__(self, initial_size) -> None:
+    def __init__(self, initial_size: int) -> None:
         self._size = initial_size
         self._data = [Node(None, None)] * self._size
 
@@ -37,7 +37,7 @@ class LinkedListHashTable(object):
                 return target.value
         return None
 
-    def hash(self, value) -> int:
+    def hash(self, value: int) -> int:
         value = value if value != 0 else self.size
         return value % self._size
 
