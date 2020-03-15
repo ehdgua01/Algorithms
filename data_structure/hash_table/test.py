@@ -3,6 +3,7 @@ import unittest
 from .division_method import DivisionMethodHashTable
 from .digits_folding import DigitsFoldingHashTable
 from .linked_list_hash_table import LinkedListHashTable
+from .linear_probing import LinearProbingHashTable
 
 
 class TestCase(unittest.TestCase):
@@ -36,3 +37,20 @@ class TestCase(unittest.TestCase):
         hash_table[22] = "B"
         self.assertEqual(hash_table[22], "B")
         self.assertIsNone(hash_table[13])
+
+    def test_linear_probing(self) -> None:
+        hash_table = LinearProbingHashTable(3)
+
+        hash_table.set(1)
+        hash_table.set(2)
+        hash_table.set(3)
+        self.assertEqual(hash_table.size, 3)
+
+        hash_table.set(4)
+        self.assertEqual(hash_table.size, 5)
+
+        hash_table.set(5)
+        hash_table.set(6)
+        hash_table.set(7)
+        self.assertEqual(hash_table.keys, {5: 5, 1: 1, 2: 2, 3: 3, 4: 4, 6: 6, 0: 7})
+        self.assertEqual(hash_table.size, 7)
