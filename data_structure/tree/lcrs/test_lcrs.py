@@ -5,45 +5,35 @@ from .lcrs import Node, append, destroy, print_tree
 
 class TestCase(unittest.TestCase):
     def setUp(self) -> None:
-        self.root = Node('Root')
+        self.root = Node("Root")
 
     def test_lcrs(self) -> None:
-        node_a = Node('A')
-        node_b = Node('B')
-        node_c = Node('C')
-        node_d = Node('D')
-        node_e = Node('E')
+        node_a = Node("A")
+        node_b = Node("B")
+        node_c = Node("C")
+        node_d = Node("D")
+        node_e = Node("E")
 
         append(self.root, node_a)
-        self.assertEqual(self.root.child.value, 'A')
+        self.assertEqual(self.root.child.value, "A")
         self.assertIsNone(self.root.child.sibling)
 
         append(self.root, node_b)
-        self.assertEqual(self.root.child.sibling.value, 'B')
+        self.assertEqual(self.root.child.sibling.value, "B")
         self.assertEqual(node_a.sibling, node_b)
 
         append(node_b, node_c)
-        self.assertEqual(node_b.child.value, 'C')
+        self.assertEqual(node_b.child.value, "C")
 
         append(node_b, node_d)
-        self.assertEqual(node_b.child.sibling.value, 'D')
-        self.assertEqual(
-            self.root.child.sibling.child.sibling.value, 'D'
-        )
+        self.assertEqual(node_b.child.sibling.value, "D")
+        self.assertEqual(self.root.child.sibling.child.sibling.value, "D")
 
         append(node_a, node_e)
         tree = print_tree(self.root)
-        self.assertEqual(tree, {
-            "Root": {
-                "A": {
-                    "E": "last",
-                },
-                "B": {
-                    "C": "last",
-                    "D": "last",
-                },
-            },
-        })
+        self.assertEqual(
+            tree, {"Root": {"A": {"E": "last",}, "B": {"C": "last", "D": "last",},},}
+        )
 
         destroy(self.root)
         self.assertIsNone(self.root.child)

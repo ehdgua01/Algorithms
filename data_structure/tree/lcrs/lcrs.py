@@ -32,7 +32,7 @@ def print_tree(node: Node) -> dict:
     if node.child:
         result[node.value] = print_tree(node.child)
     else:
-        result[node.value] = 'last'
+        result[node.value] = "last"
 
     if node.sibling:
         result.update(print_tree(node.sibling))

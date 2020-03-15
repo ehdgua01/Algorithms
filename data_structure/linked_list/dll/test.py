@@ -50,12 +50,7 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.dll.get_data_at(8), 8)
 
     def test_insert(self):
-        self.assertRaises(
-            ValueError,
-            self.dll.insert,
-            new=Node(1),
-            location=-2
-        )
+        self.assertRaises(ValueError, self.dll.insert, new=Node(1), location=-2)
         self.dll.insert(Node(1), 1)
         self.assertEqual(self.dll.head.data, 1)
         self.assertEqual(self.dll.tail.data, 1)
@@ -99,5 +94,5 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.dll.size, 7)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

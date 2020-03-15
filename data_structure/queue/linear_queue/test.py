@@ -33,5 +33,5 @@ class TestCase(unittest.TestCase):
         self.assertRaises(Exception, self.queue.get)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

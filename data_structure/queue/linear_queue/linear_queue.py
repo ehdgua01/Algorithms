@@ -9,14 +9,14 @@ class LinearQueue(object):
         if self.is_full:
             """앞에 공간이 남아있지만,
             후단이 맨 뒤에 위치해 있으므로 오류 발생"""
-            raise OverflowError('Overflow')
+            raise OverflowError("Overflow")
 
         self.queue[self.rear] = value
         self.rear += 1
 
     def get(self):
         if self.is_empty:
-            raise Exception('Underflow')
+            raise Exception("Underflow")
 
         value = self.queue[self.front]
         self.front += 1
@@ -28,7 +28,4 @@ class LinearQueue(object):
 
     @property
     def is_full(self) -> bool:
-        return (
-            False if self.is_empty
-            else self.rear == self.capacity
-        )
+        return False if self.is_empty else self.rear == self.capacity

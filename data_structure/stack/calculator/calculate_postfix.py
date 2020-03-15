@@ -3,10 +3,10 @@ import operator
 from ..stack import Stack, Node
 
 __OPERATOR = {
-    '+': operator.add,
-    '-': operator.sub,
-    '*': operator.mul,
-    '/': operator.floordiv,
+    "+": operator.add,
+    "-": operator.sub,
+    "*": operator.mul,
+    "/": operator.floordiv,
 }
 
 
@@ -26,5 +26,5 @@ def calculate_postfix(postfix: list):
                 p2 = result_stack.pop()
                 result_stack.push(Node(__OPERATOR[token](p1, p2)))
             else:
-                raise Exception('허용되지 않은 데이터')
+                raise Exception("허용되지 않은 데이터")
     return result_stack.pop()

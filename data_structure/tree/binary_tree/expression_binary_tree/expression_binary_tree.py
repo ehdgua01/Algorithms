@@ -3,22 +3,22 @@ import operator
 
 
 __OPERATOR = {
-    '+': operator.add,
-    '-': operator.sub,
-    '*': operator.mul,
-    '/': operator.floordiv,
+    "+": operator.add,
+    "-": operator.sub,
+    "*": operator.mul,
+    "/": operator.floordiv,
 }
 OPERATOR_PRIORITY = {
-    '*': 3,
-    '/': 3,
-    '+': 2,
-    '-': 2,
-    '(': 1,
+    "*": 3,
+    "/": 3,
+    "+": 2,
+    "-": 2,
+    "(": 1,
 }
 
 
 def is_number(value: str) -> bool:
-    result = re.fullmatch(r'^(-)?[0-9]+(\.[0-9]+)?', value)
+    result = re.fullmatch(r"^(-)?[0-9]+(\.[0-9]+)?", value)
     return False if result is None else True
 
 
@@ -42,7 +42,7 @@ class Stack(object):
 
     def pop(self):
         if self.is_empty:
-            raise Exception('Stack is empty')
+            raise Exception("Stack is empty")
         data = self.top.data
         self.top = self.top.next
         self.size -= 1
@@ -50,7 +50,7 @@ class Stack(object):
 
     def push(self, new: StackNode) -> None:
         if not isinstance(new, StackNode):
-            raise TypeError('Not node type')
+            raise TypeError("Not node type")
         if self.is_empty:
             self.top = new
         else:
@@ -74,9 +74,7 @@ def postfix_to_tree(expr: list) -> TreeNode:
 
     for token in expr:
         if is_number(token):
-            __stack.push(StackNode(TreeNode(
-                round(float(token), 2)
-            )))
+            __stack.push(StackNode(TreeNode(round(float(token), 2))))
         elif token in __OPERATOR:
             p1 = __stack.pop()
             p2 = __stack.pop()

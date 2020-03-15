@@ -170,8 +170,8 @@ class RedBlackTree(object):
     def remove(self, target):
         if target := self.search(target):
             if (
-                    target.left == RedBlackTree.empty_node
-                    or target.right == RedBlackTree.empty_node
+                target.left == RedBlackTree.empty_node
+                or target.right == RedBlackTree.empty_node
             ):
                 removed = target
             else:
@@ -221,7 +221,4 @@ class RedBlackTree(object):
 
     @property
     def is_empty(self):
-        return (
-                self.root is None
-                or self.root == RedBlackTree.empty_node
-        )
+        return self.root is None or self.root == RedBlackTree.empty_node

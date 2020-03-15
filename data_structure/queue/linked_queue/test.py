@@ -48,5 +48,5 @@ class TestCase(unittest.TestCase):
         self.assertIsNone(self.queue.rear)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

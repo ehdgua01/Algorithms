@@ -29,9 +29,9 @@ class DigitsFoldingHashTable(object):
         s = self.bit_count(self._size)
 
         if k < s:
-            result <<= (s - k)
+            result <<= s - k
 
         return result
 
     def bit_count(self, value) -> int:
-        return len(bin(value).replace('0b', ''))
+        return len(bin(value).replace("0b", ""))

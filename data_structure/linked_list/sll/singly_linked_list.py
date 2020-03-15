@@ -21,7 +21,7 @@ class SinglyLinkedList(object):
 
     def insert(self, new: Node, location: int):
         if location < 1 or (self.is_empty and location != 1):
-            raise ValueError('invalid location')
+            raise ValueError("invalid location")
 
         if self.is_empty:
             self.head = new
@@ -36,7 +36,7 @@ class SinglyLinkedList(object):
 
     def pop(self):
         if self.is_empty:
-            raise ValueError('List is empty')
+            raise ValueError("List is empty")
         new_tail = self.get_node_at(self.size - 1)
         new_tail.next = None
         self.tail = new_tail
@@ -44,9 +44,9 @@ class SinglyLinkedList(object):
 
     def remove(self, location: int):
         if self.is_empty:
-            raise ValueError('List is empty')
+            raise ValueError("List is empty")
         if self.size < location:
-            raise ValueError('Invalid location')
+            raise ValueError("Invalid location")
         if self.size == 1:
             self.__init__()
             return
@@ -66,7 +66,7 @@ class SinglyLinkedList(object):
 
     def get_node_at(self, location: int) -> Node:
         if (location < 1) or self.size < location:
-            raise ValueError('Invalid location')
+            raise ValueError("Invalid location")
         temp = self.head
         while (temp and temp.next) and location - 1:
             temp = temp.next

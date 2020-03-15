@@ -24,7 +24,7 @@ class DoublyLinkedList(object):
 
     def insert(self, new: Node, location: int):
         if location < 1 or (self.is_empty and location != 1):
-            raise ValueError('invalid location')
+            raise ValueError("invalid location")
 
         if self.is_empty:
             self.head = new
@@ -43,14 +43,14 @@ class DoublyLinkedList(object):
 
     def pop(self):
         if self.is_empty:
-            raise ValueError('List is empty')
+            raise ValueError("List is empty")
         self.tail = self.tail.prev
         self.tail.next = None
         self.size -= 1
 
     def remove(self, location: int):
         if self.is_empty:
-            raise ValueError('List is empty')
+            raise ValueError("List is empty")
         target = self.get_node_at(location)
         if self.tail == target:
             self.tail = self.tail.prev
@@ -65,7 +65,7 @@ class DoublyLinkedList(object):
 
     def get_node_at(self, location: int):
         if (location < 1) or (self.size < location):
-            raise ValueError('Invalid location')
+            raise ValueError("Invalid location")
 
         if int(self.size / 2) < location:
             target: Node = self.tail
@@ -82,7 +82,7 @@ class DoublyLinkedList(object):
 
     def get_data_at(self, location: int):
         if (location < 1) or self.is_empty or (self.size < location):
-            raise ValueError('Invalid location')
+            raise ValueError("Invalid location")
 
         return self.get_node_at(location).data
 

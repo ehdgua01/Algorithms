@@ -28,8 +28,8 @@ class MinHeap(object):
         while left or right:
             if left and right:
                 if (
-                        self.data[left] < self.data[current]
-                        or self.data[right] < self.data[current]
+                    self.data[left] < self.data[current]
+                    or self.data[right] < self.data[current]
                 ):
                     if self.data[left] <= self.data[right]:
                         self.__swap(current, left)

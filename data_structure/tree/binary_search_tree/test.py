@@ -13,13 +13,13 @@ class TestCase(unittest.TestCase):
         A  C E  G
         """
         bst = BinarySearchTree()
-        a = Node('A')
-        b = Node('B')
-        c = Node('C')
-        d = Node('D')
-        e = Node('E')
-        f = Node('F')
-        g = Node('G')
+        a = Node("A")
+        b = Node("B")
+        c = Node("C")
+        d = Node("D")
+        e = Node("E")
+        f = Node("F")
+        g = Node("G")
 
         # 삽입 알고리즘 테스트
         bst.insert(d)
@@ -48,18 +48,15 @@ class TestCase(unittest.TestCase):
         self.assertEqual(g.parent, f)
 
         # 탐색 알고리즘 테스트
-        self.assertIsNone(bst.search('H'))
+        self.assertIsNone(bst.search("H"))
         self.assertEqual(
-            bst.search('G', collection=bst.root),
-            g,
+            bst.search("G", collection=bst.root), g,
         )
         self.assertEqual(
-            bst.search('D', collection=bst.root),
-            d,
+            bst.search("D", collection=bst.root), d,
         )
         self.assertEqual(
-            bst.search('C', collection=bst.root),
-            c,
+            bst.search("C", collection=bst.root), c,
         )
 
         # 제거 알고리즘 테스트
@@ -71,7 +68,7 @@ class TestCase(unittest.TestCase):
          / \  /
         A  C E
         """
-        bst.remove('F')
+        bst.remove("F")
         self.assertEqual(bst.root.right, g)
         self.assertEqual(bst.root.right.left, e)
 
@@ -83,7 +80,7 @@ class TestCase(unittest.TestCase):
          / \
         A  C
         """
-        bst.remove('D')
+        bst.remove("D")
         self.assertEqual(bst.root, e)
         self.assertEqual(bst.root.right, g)
         self.assertEqual(bst.root.left, b)
@@ -96,6 +93,6 @@ class TestCase(unittest.TestCase):
          /
         A 
         """
-        bst.remove('C')
+        bst.remove("C")
         self.assertIsNone(bst.root.left.right)
         self.assertEqual(bst.root.left, b)

@@ -55,5 +55,5 @@ class TestCase(unittest.TestCase):
         self.assertEqual(self.stack.get_size(), 8)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -46,14 +46,14 @@ class CircularLinkedList(object):
 
     def pop(self):
         if self.is_empty:
-            raise ValueError('List is empty')
+            raise ValueError("List is empty")
         self.tail = self.tail.prev
         self.connect_head_tail()
         self.size -= 1
 
     def remove(self, location: int):
         if self.is_empty:
-            raise ValueError('List is empty')
+            raise ValueError("List is empty")
         target = self.get_node_at(location)
         if self.tail == target:
             self.tail = self.tail.prev
@@ -69,7 +69,7 @@ class CircularLinkedList(object):
 
     def get_node_at(self, location: int) -> Node:
         if (location < 1) or (self.size < location):
-            raise ValueError('Invalid location')
+            raise ValueError("Invalid location")
 
         if int(self.size / 2) < location:
             target: Node = self.tail

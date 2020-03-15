@@ -1,20 +1,24 @@
 import unittest
 
 from .simple_binary_tree import (
-    Node, pre_order_tree, in_order_tree,
-    post_order_tree, destroy_tree, is_full_binary_tree,
+    Node,
+    pre_order_tree,
+    in_order_tree,
+    post_order_tree,
+    destroy_tree,
+    is_full_binary_tree,
 )
 
 
 class TestCase(unittest.TestCase):
     def setUp(self) -> None:
-        self.root = Node('A')
-        self.node_b = Node('B')
-        self.node_c = Node('C')
-        self.node_d = Node('D')
-        self.node_e = Node('E')
-        self.node_f = Node('F')
-        self.node_g = Node('G')
+        self.root = Node("A")
+        self.node_b = Node("B")
+        self.node_c = Node("C")
+        self.node_d = Node("D")
+        self.node_e = Node("E")
+        self.node_f = Node("F")
+        self.node_g = Node("G")
 
         self.root.left = self.node_b
         self.root.right = self.node_e
@@ -24,23 +28,21 @@ class TestCase(unittest.TestCase):
         self.node_e.right = self.node_g
 
     def test_pre_order_tree(self):
-        self.assertEqual(pre_order_tree(self.root), 'ABCDEFG')
+        self.assertEqual(pre_order_tree(self.root), "ABCDEFG")
 
     def test_in_order_tree(self):
-        self.assertEqual(in_order_tree(self.root), 'CBDAFEG')
+        self.assertEqual(in_order_tree(self.root), "CBDAFEG")
 
     def test_post_order_tree(self):
-        self.assertEqual(post_order_tree(self.root), 'CDBFGEA')
+        self.assertEqual(post_order_tree(self.root), "CDBFGEA")
 
     def test_is_full_binary_tree(self):
         self.assertEqual(
-            is_full_binary_tree(self.root),
-            True,
+            is_full_binary_tree(self.root), True,
         )
         self.node_e.right = None
         self.assertEqual(
-            is_full_binary_tree(self.root),
-            False,
+            is_full_binary_tree(self.root), False,
         )
 
     def test_destroy_tree(self):
@@ -61,5 +63,5 @@ class TestCase(unittest.TestCase):
         self.assertIsNone(self.node_g.right)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

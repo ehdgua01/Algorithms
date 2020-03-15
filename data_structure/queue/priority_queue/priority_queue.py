@@ -32,8 +32,8 @@ class PriorityQueue(object):
         while left or right:
             if left and right:
                 if (
-                        self.data[left][1] < self.data[current][1]
-                        or self.data[right][1] < self.data[current][1]
+                    self.data[left][1] < self.data[current][1]
+                    or self.data[right][1] < self.data[current][1]
                 ):
                     if self.data[left][1] <= self.data[right][1]:
                         self.__swap(current, left)

@@ -30,7 +30,7 @@ def in_order_tree(node: Node) -> str:
 
 
 def post_order_tree(node: Node) -> str:
-    result = ''
+    result = ""
 
     if node.left:
         result += post_order_tree(node.left)
@@ -46,10 +46,7 @@ def is_full_binary_tree(node) -> bool:
     if (node.left is None) and (node.right is None):
         return True
     elif (node.left is not None) and (node.right is not None):
-        return (
-                is_full_binary_tree(node.left)
-                and is_full_binary_tree(node.right)
-        )
+        return is_full_binary_tree(node.left) and is_full_binary_tree(node.right)
     return False
 
 
