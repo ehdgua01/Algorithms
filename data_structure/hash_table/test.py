@@ -4,6 +4,7 @@ from .division_method import DivisionMethodHashTable
 from .digits_folding import DigitsFoldingHashTable
 from .linked_list_hash_table import LinkedListHashTable
 from .linear_probing import LinearProbingHashTable
+from .quadratic_probing import QuadraticProbingHashTable
 
 
 class TestCase(unittest.TestCase):
@@ -54,3 +55,15 @@ class TestCase(unittest.TestCase):
         hash_table.set(7)
         self.assertEqual(hash_table.keys, {5: 5, 1: 1, 2: 2, 3: 3, 4: 4, 6: 6, 0: 7})
         self.assertEqual(hash_table.size, 7)
+
+    def test_quadratic_probing(self) -> None:
+        hash_table = QuadraticProbingHashTable(7)
+
+        for i in range(0, 12, 2):
+            hash_table.set(i)
+
+        self.assertEqual(hash_table.size, 7)
+
+        hash_table.set(14)
+        self.assertEqual(hash_table.size, 11)
+        self.assertEqual(hash_table.keys, {0: 0, 8: 8, 2: 2, 10: 10, 4: 4, 6: 6, 3: 14})
