@@ -3,7 +3,7 @@ class DigitsFoldingHashTable(object):
         self._size = initial_size
         self._data = [None] * self._size
 
-    def __setitem__(self, key, value):
+    def __setitem__(self, key, value) -> None:
         key = self.hash(key)
 
         if self._data[key] != value:
@@ -15,7 +15,7 @@ class DigitsFoldingHashTable(object):
         else:
             raise TypeError
 
-    def hash(self, key):
+    def hash(self, key) -> int:
         result = 0
 
         if isinstance(key, str):
