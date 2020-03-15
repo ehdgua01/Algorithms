@@ -54,8 +54,8 @@ class QuadraticProbingHashTable(object):
                 self.rehashing(self.next_prime(self.__size))
                 self.set(value)
             else:
-                coefficient = kwargs.get("coefficient", 1)
-                self.set(value, key + (coefficient ** 2))
+                coefficient = kwargs.get("coefficient", 0) + 1
+                self.set(value, key + (coefficient ** 2), coefficient=coefficient)
 
     @property
     def keys(self):
