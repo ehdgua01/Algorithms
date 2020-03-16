@@ -1,3 +1,6 @@
+"""
+Simple adjacency list directed graph
+"""
 import unittest
 from typing import Union, Any
 
@@ -69,55 +72,84 @@ class AdjacencyListGraph(object):
             current_vertex = current_vertex.next
         return result
 
+    def dfs(self, vertex: Vertex = None) -> None:
+        if self.is_empty:
+            return
+
+        __vertex = vertex if vertex else self.vertices
+        __vertex.visited = True
+        __edge = __vertex.adjacency_list
+
+        while __edge is not None:
+            if not __edge.target.visited:
+                self.dfs(__edge.target)
+            __edge = __edge.next
+
     @property
     def is_empty(self) -> bool:
         return self.vertices is None
 
 
 class TestCase(unittest.TestCase):
-    def test_graph(self):
-        graph = AdjacencyListGraph()
+    def setUp(self) -> None:
+        self.graph = AdjacencyListGraph()
         vertex_a = Vertex("A")
         vertex_b = Vertex("B")
         vertex_c = Vertex("C")
         vertex_d = Vertex("D")
         vertex_e = Vertex("E")
+        vertex_f = Vertex("F")
+        vertex_g = Vertex("G")
 
-        graph.add_vertex(vertex_a)
-        graph.add_vertex(vertex_b)
-        graph.add_vertex(vertex_c)
-        graph.add_vertex(vertex_d)
-        graph.add_vertex(vertex_e)
+        self.graph.add_vertex(vertex_a)
+        self.graph.add_vertex(vertex_b)
+        self.graph.add_vertex(vertex_c)
+        self.graph.add_vertex(vertex_d)
+        self.graph.add_vertex(vertex_e)
+        self.graph.add_vertex(vertex_f)
+        self.graph.add_vertex(vertex_g)
 
         vertex_a.create_edge(vertex_b)
         vertex_a.create_edge(vertex_c)
-        vertex_a.create_edge(vertex_d)
-        vertex_a.create_edge(vertex_e)
 
-        vertex_b.create_edge(vertex_a)
-        vertex_b.create_edge(vertex_c)
+        vertex_b.create_edge(vertex_d)
         vertex_b.create_edge(vertex_e)
 
-        vertex_c.create_edge(vertex_a)
-        vertex_c.create_edge(vertex_b)
+        vertex_c.create_edge(vertex_d)
+        vertex_c.create_edge(vertex_f)
 
-        vertex_d.create_edge(vertex_a)
         vertex_d.create_edge(vertex_e)
+        vertex_d.create_edge(vertex_g)
 
-        vertex_e.create_edge(vertex_a)
-        vertex_e.create_edge(vertex_b)
-        vertex_e.create_edge(vertex_d)
+        vertex_e.create_edge(vertex_g)
 
+        vertex_f.create_edge(vertex_g)
+
+    def test_print_graph(self):
         self.assertEqual(
-            graph.print_graph(),
+            self.graph.print_graph(),
             {
-                "A": {
-                    "adjacency_list": {"B": 0, "C": 0, "D": 0, "E": 0},
-                    "visited": False,
-                },
-                "B": {"adjacency_list": {"A": 0, "C": 0, "E": 0}, "visited": False},
-                "C": {"adjacency_list": {"A": 0, "B": 0}, "visited": False},
-                "D": {"adjacency_list": {"A": 0, "E": 0}, "visited": False},
-                "E": {"adjacency_list": {"A": 0, "B": 0, "D": 0}, "visited": False},
+                "A": {"adjacency_list": {"B": 0, "C": 0}, "visited": False},
+                "B": {"adjacency_list": {"D": 0, "E": 0}, "visited": False},
+                "C": {"adjacency_list": {"D": 0, "F": 0}, "visited": False},
+                "D": {"adjacency_list": {"E": 0, "G": 0}, "visited": False},
+                "E": {"adjacency_list": {"G": 0}, "visited": False},
+                "F": {"adjacency_list": {"G": 0}, "visited": False},
+                "G": {"adjacency_list": {}, "visited": False},
+            },
+        )
+
+    def test_dfs(self):
+        self.graph.dfs()
+        self.assertEqual(
+            self.graph.print_graph(),
+            {
+                "A": {"adjacency_list": {"B": 0, "C": 0}, "visited": True},
+                "B": {"adjacency_list": {"D": 0, "E": 0}, "visited": True},
+                "C": {"adjacency_list": {"D": 0, "F": 0}, "visited": True},
+                "D": {"adjacency_list": {"E": 0, "G": 0}, "visited": True},
+                "E": {"adjacency_list": {"G": 0}, "visited": True},
+                "F": {"adjacency_list": {"G": 0}, "visited": True},
+                "G": {"adjacency_list": {}, "visited": True},
             },
         )
