@@ -18,12 +18,7 @@ class Vertex(object):
         self.next: Union[Vertex, None] = None
         self.adjacency_list: Union[Edge, None] = None
 
-    def destroy(self):
-        while self.adjacency_list is not None:
-            __edge = self.adjacency_list.next
-            self.adjacency_list = __edge
-
-    def create_edge(self, target):
+    def create_edge(self, target) -> None:
         __edge = Edge(self, target, 0)
 
         if self.adjacency_list is None:
@@ -50,11 +45,11 @@ class AdjacencyListGraph(object):
             current_vertex.next = vertex
         vertex.index = self.vertex_count = self.vertex_count + 1
 
-    def print_graph(self):
-        if self.is_empty:
-            return
-
+    def print_graph(self) -> dict:
         result = {}
+
+        if self.is_empty:
+            return result
 
         current_vertex = self.vertices
         while current_vertex is not None:
@@ -70,7 +65,7 @@ class AdjacencyListGraph(object):
         return result
 
     @property
-    def is_empty(self):
+    def is_empty(self) -> bool:
         return self.vertices is None
 
 
