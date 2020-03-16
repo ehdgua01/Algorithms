@@ -13,7 +13,7 @@ class Edge(object):
 class Vertex(object):
     def __init__(self, value: Any) -> None:
         self.value = value
-        self.visited: int = 0
+        self.visited: bool = False
         self.index: int = -1
         self.next: Union[Vertex, None] = None
         self.adjacency_list: Union[Edge, None] = None
@@ -53,12 +53,17 @@ class AdjacencyListGraph(object):
 
         current_vertex = self.vertices
         while current_vertex is not None:
-            result[current_vertex.value] = {}
+            result[current_vertex.value] = {
+                "adjacency_list": {},
+                "visited": current_vertex.visited,
+            }
 
             if current_vertex.adjacency_list is not None:
                 __edge = current_vertex.adjacency_list
                 while __edge is not None:
-                    result[current_vertex.value][__edge.target.value] = __edge.weight
+                    result[current_vertex.value]["adjacency_list"][
+                        __edge.target.value
+                    ] = __edge.weight
                     __edge = __edge.next
 
             current_vertex = current_vertex.next
@@ -106,10 +111,13 @@ class TestCase(unittest.TestCase):
         self.assertEqual(
             graph.print_graph(),
             {
-                "A": {"B": 0, "C": 0, "D": 0, "E": 0},
-                "B": {"A": 0, "C": 0, "E": 0},
-                "C": {"A": 0, "B": 0},
-                "D": {"A": 0, "E": 0},
-                "E": {"A": 0, "B": 0, "D": 0},
+                "A": {
+                    "adjacency_list": {"B": 0, "C": 0, "D": 0, "E": 0},
+                    "visited": False,
+                },
+                "B": {"adjacency_list": {"A": 0, "C": 0, "E": 0}, "visited": False},
+                "C": {"adjacency_list": {"A": 0, "B": 0}, "visited": False},
+                "D": {"adjacency_list": {"A": 0, "E": 0}, "visited": False},
+                "E": {"adjacency_list": {"A": 0, "B": 0, "D": 0}, "visited": False},
             },
         )
