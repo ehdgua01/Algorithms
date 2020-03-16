@@ -2,7 +2,8 @@
 Simple adjacency list directed graph
 """
 import unittest
-from typing import Union, Any
+from typing import Union, Any, Deque
+from collections import deque
 
 
 class Edge(object):
@@ -37,6 +38,7 @@ class AdjacencyListGraph(object):
     def __init__(self) -> None:
         self.vertices: Union[Vertex, None] = None
         self.vertex_count: int = 0
+        self.bfs_queue: Deque[Vertex] = deque()
 
     def add_vertex(self, vertex: Vertex) -> None:
         if self.is_empty:
@@ -84,6 +86,22 @@ class AdjacencyListGraph(object):
             if not __edge.target.visited:
                 self.dfs(__edge.target)
             __edge = __edge.next
+
+    def bfs(self) -> None:
+        if self.is_empty:
+            return
+
+        self.vertices.visited = True
+        self.bfs_queue.append(self.vertices)
+        while self.bfs_queue:
+            __vertex = self.bfs_queue.pop()
+            __edge = __vertex.adjacency_list
+
+            while __edge is not None:
+                if not __edge.target.visited:
+                    __edge.target.visited = True
+                    self.bfs_queue.appendleft(__edge.target)
+                __edge = __edge.next
 
     @property
     def is_empty(self) -> bool:
@@ -141,6 +159,21 @@ class TestCase(unittest.TestCase):
 
     def test_dfs(self):
         self.graph.dfs()
+        self.assertEqual(
+            self.graph.print_graph(),
+            {
+                "A": {"adjacency_list": {"B": 0, "C": 0}, "visited": True},
+                "B": {"adjacency_list": {"D": 0, "E": 0}, "visited": True},
+                "C": {"adjacency_list": {"D": 0, "F": 0}, "visited": True},
+                "D": {"adjacency_list": {"E": 0, "G": 0}, "visited": True},
+                "E": {"adjacency_list": {"G": 0}, "visited": True},
+                "F": {"adjacency_list": {"G": 0}, "visited": True},
+                "G": {"adjacency_list": {}, "visited": True},
+            },
+        )
+
+    def test_bfs(self):
+        self.graph.bfs()
         self.assertEqual(
             self.graph.print_graph(),
             {
