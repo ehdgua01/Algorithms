@@ -16,7 +16,7 @@ class Stack(object):
 
     def pop(self):
         if self.is_empty:
-            raise Exception('Stack is empty')
+            raise Exception("Stack is empty")
         data = self.top.data
         self.top = self.top.next
         self.size -= 1
@@ -24,7 +24,7 @@ class Stack(object):
 
     def push(self, new: Node) -> None:
         if not isinstance(new, Node):
-            raise TypeError('Not node type')
+            raise TypeError("Not node type")
         if self.is_empty:
             self.top = new
         else:

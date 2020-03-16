@@ -6,7 +6,7 @@ https://programmers.co.kr/learn/courses/30/lessons/42576
 
 
 def solution(participant, completion):
-    answer = ''
+    answer = ""
 
     # 한 루프로 처리하고자 참가자와 완주자 목록을 정렬
     participant = sorted(participant)

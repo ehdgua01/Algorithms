@@ -9,5 +9,5 @@ class TestCase(unittest.TestCase):
         self.assertEqual(solution([1, 1, 9, 1, 1, 1], 0), 5)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

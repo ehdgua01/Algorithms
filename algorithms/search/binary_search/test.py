@@ -6,23 +6,33 @@ from .binary_search import binary_search
 class TestCase(unittest.TestCase):
     def setUp(self) -> None:
         self.data = [
-            1, 2, 3, 4, 5, 6, 7, 8, 9,
-            10, 11, 12, 13, 14, 15, 16,
-            17, 18, 19, 20,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
         ]
 
     def test_binary_search(self):
         self.assertRaises(
-            Exception,
-            binary_search,
-            data=[1, 3, 2],
-            size=3,
-            target=2,
+            Exception, binary_search, data=[1, 3, 2], size=3, target=2,
         )
-        self.assertIsNone(
-            binary_search(self.data, len(self.data), 21)
-        )
+        self.assertIsNone(binary_search(self.data, len(self.data), 21))
         self.assertEqual(
-            binary_search(self.data, len(self.data), 13),
-            13,
+            binary_search(self.data, len(self.data), 13), 13,
         )

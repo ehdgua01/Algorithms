@@ -22,7 +22,7 @@ def solution(genres, plays):
 
     while genres_total_play:
         most_plays_count = max(genres_total_play.values())
-        most_plays_genres = ''
+        most_plays_genres = ""
 
         for k in genres_total_play.keys():
             if genres_total_play[k] == most_plays_count:
