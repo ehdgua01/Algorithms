@@ -22,8 +22,8 @@ class Vertex(object):
         self.next: Union[Vertex, None] = None
         self.adjacency_list: Union[Edge, None] = None
 
-    def create_edge(self, target) -> None:
-        __edge = Edge(self, target, 0)
+    def create_edge(self, target, weight) -> None:
+        __edge = Edge(self, target, weight)
 
         if self.adjacency_list is None:
             self.adjacency_list = __edge
@@ -134,21 +134,21 @@ class TestCase(unittest.TestCase):
         self.graph.add_vertex(vertex_f)
         self.graph.add_vertex(vertex_g)
 
-        vertex_a.create_edge(vertex_b)
-        vertex_a.create_edge(vertex_c)
+        vertex_a.create_edge(vertex_b, 0)
+        vertex_a.create_edge(vertex_c, 0)
 
-        vertex_b.create_edge(vertex_d)
-        vertex_b.create_edge(vertex_e)
+        vertex_b.create_edge(vertex_d, 0)
+        vertex_b.create_edge(vertex_e, 0)
 
-        vertex_c.create_edge(vertex_d)
-        vertex_c.create_edge(vertex_f)
+        vertex_c.create_edge(vertex_d, 0)
+        vertex_c.create_edge(vertex_f, 0)
 
-        vertex_d.create_edge(vertex_e)
-        vertex_d.create_edge(vertex_g)
+        vertex_d.create_edge(vertex_e, 0)
+        vertex_d.create_edge(vertex_g, 0)
 
-        vertex_e.create_edge(vertex_g)
+        vertex_e.create_edge(vertex_g, 0)
 
-        vertex_f.create_edge(vertex_g)
+        vertex_f.create_edge(vertex_g, 0)
 
     def test_print_graph(self):
         self.assertEqual(
