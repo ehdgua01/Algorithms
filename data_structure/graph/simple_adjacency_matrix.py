@@ -2,8 +2,8 @@
 Simple adjacency matrix undirected graph
 """
 import unittest
-from typing import List, Tuple, Any
-from collections import defaultdict
+from typing import List, Deque, Any
+from collections import defaultdict, deque
 
 
 class Vertex(object):
@@ -75,6 +75,19 @@ class AdjacencyMatrixGraph(object):
             if not self.vertices[target].is_visited:
                 self.dfs(self.vertices[target])
 
+    def bfs(self):
+        if self.is_empty:
+            return
+
+        bfs_queue: Deque[Vertex] = deque([self.vertices[0]])
+        while bfs_queue:
+            __vertex = bfs_queue.pop()
+            __vertex.visit()
+
+            for target in __vertex.edges:
+                if not self.vertices[target].is_visited:
+                    bfs_queue.appendleft(self.vertices[target])
+
     @property
     def vertex_count(self) -> int:
         return len(self.vertices)
@@ -135,6 +148,21 @@ class TestCase(unittest.TestCase):
 
     def test_dfs(self):
         self.graph.dfs()
+        self.assertEqual(
+            self.graph.print_graph(),
+            {
+                "A": {"visited": True, "edges": [(0, 1), (0, 2)]},
+                "B": {"visited": True, "edges": [(1, 0), (1, 3), (1, 4)]},
+                "C": {"visited": True, "edges": [(2, 0), (2, 3), (2, 5)]},
+                "D": {"visited": True, "edges": [(3, 1), (3, 2), (3, 4), (3, 6)]},
+                "E": {"visited": True, "edges": [(4, 1), (4, 3), (4, 6)]},
+                "F": {"visited": True, "edges": [(5, 2), (5, 6)]},
+                "G": {"visited": True, "edges": [(6, 3), (6, 4), (6, 5)]},
+            },
+        )
+
+    def test_bfs(self):
+        self.graph.bfs()
         self.assertEqual(
             self.graph.print_graph(),
             {
