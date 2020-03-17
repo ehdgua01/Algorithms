@@ -33,6 +33,13 @@ class Vertex(object):
                 adjacency_list = adjacency_list.next
             adjacency_list.next = __edge
 
+    def visit(self):
+        self.visited = True
+
+    @property
+    def is_visited(self):
+        return self.visited
+
 
 class AdjacencyListGraph(object):
     def __init__(self) -> None:
@@ -60,7 +67,7 @@ class AdjacencyListGraph(object):
         while current_vertex is not None:
             result[current_vertex.value] = {
                 "adjacency_list": {},
-                "visited": current_vertex.visited,
+                "visited": current_vertex.is_visited,
             }
 
             if current_vertex.adjacency_list is not None:
@@ -79,11 +86,11 @@ class AdjacencyListGraph(object):
             return
 
         __vertex = vertex if vertex else self.vertices
-        __vertex.visited = True
+        __vertex.visite()
         __edge = __vertex.adjacency_list
 
         while __edge is not None:
-            if not __edge.target.visited:
+            if not __edge.target.is_visited:
                 self.dfs(__edge.target)
             __edge = __edge.next
 
@@ -91,15 +98,15 @@ class AdjacencyListGraph(object):
         if self.is_empty:
             return
 
-        self.vertices.visited = True
+        self.vertices.visit()
         self.bfs_queue.append(self.vertices)
         while self.bfs_queue:
             __vertex = self.bfs_queue.pop()
             __edge = __vertex.adjacency_list
 
             while __edge is not None:
-                if not __edge.target.visited:
-                    __edge.target.visited = True
+                if not __edge.target.is_visited:
+                    __edge.target.visit()
                     self.bfs_queue.appendleft(__edge.target)
                 __edge = __edge.next
 
