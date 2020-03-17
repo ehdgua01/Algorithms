@@ -3,6 +3,7 @@ Simple adjacency matrix undirected graph
 """
 import unittest
 from typing import List, Tuple, Any
+from collections import defaultdict
 
 
 class Vertex(object):
@@ -50,14 +51,17 @@ class AdjacencyMatrixGraph(object):
                 __vertex.adjacency_matrix.append(False)
                 __vertex.weights.append(0)
 
-    def print_graph(self) -> List[List[Tuple]]:
-        result = []
+    def print_graph(self) -> dict:
+        result = defaultdict(dict)
 
         if self.is_empty:
             return result
 
-        for vertex in self.vertices:
-            result.append([(vertex.index, target) for target in vertex.edges])
+        for __vertex in self.vertices:
+            result[__vertex.value]["visited"] = __vertex.is_visited
+            result[__vertex.value]["edges"] = [
+                (__vertex.index, target) for target in __vertex.edges
+            ]
         return result
 
     def dfs(self) -> None:
@@ -117,17 +121,28 @@ class TestCase(unittest.TestCase):
     def test_print_graph(self):
         self.assertEqual(
             self.graph.print_graph(),
-            [
-                [(0, 1), (0, 2)],
-                [(1, 0), (1, 3), (1, 4)],
-                [(2, 0), (2, 3), (2, 5)],
-                [(3, 1), (3, 2), (3, 4), (3, 6)],
-                [(4, 1), (4, 3), (4, 6)],
-                [(5, 2), (5, 6)],
-                [(6, 3), (6, 4), (6, 5)],
-            ],
+            {
+                "A": {"visited": False, "edges": [(0, 1), (0, 2)]},
+                "B": {"visited": False, "edges": [(1, 0), (1, 3), (1, 4)]},
+                "C": {"visited": False, "edges": [(2, 0), (2, 3), (2, 5)]},
+                "D": {"visited": False, "edges": [(3, 1), (3, 2), (3, 4), (3, 6)]},
+                "E": {"visited": False, "edges": [(4, 1), (4, 3), (4, 6)]},
+                "F": {"visited": False, "edges": [(5, 2), (5, 6)]},
+                "G": {"visited": False, "edges": [(6, 3), (6, 4), (6, 5)]},
+            },
         )
 
     def test_dfs(self):
         self.graph.dfs()
-        self.assertEqual(all([v.is_visited for v in self.graph.vertices]), True)
+        self.assertEqual(
+            self.graph.print_graph(),
+            {
+                "A": {"visited": True, "edges": [(0, 1), (0, 2)]},
+                "B": {"visited": True, "edges": [(1, 0), (1, 3), (1, 4)]},
+                "C": {"visited": True, "edges": [(2, 0), (2, 3), (2, 5)]},
+                "D": {"visited": True, "edges": [(3, 1), (3, 2), (3, 4), (3, 6)]},
+                "E": {"visited": True, "edges": [(4, 1), (4, 3), (4, 6)]},
+                "F": {"visited": True, "edges": [(5, 2), (5, 6)]},
+                "G": {"visited": True, "edges": [(6, 3), (6, 4), (6, 5)]},
+            },
+        )
