@@ -33,11 +33,11 @@ class Vertex(object):
                 adjacency_list = adjacency_list.next
             adjacency_list.next = __edge
 
-    def visit(self):
+    def visit(self) -> None:
         self.visited = True
 
     @property
-    def is_visited(self):
+    def is_visited(self) -> bool:
         return self.visited
 
 
