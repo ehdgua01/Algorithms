@@ -64,15 +64,16 @@ class AdjacencyMatrixGraph(object):
             ]
         return result
 
-    def dfs(self) -> None:
+    def dfs(self, __vertex: Vertex = None) -> None:
         if self.is_empty:
             return
 
-        for __vertex in self.vertices:
-            for target in __vertex.edges:
-                if self.vertices[target].is_visited:
-                    continue
-                self.vertices[target].visit()
+        __vertex = __vertex if __vertex else self.vertices[0]
+        __vertex.visit()
+
+        for target in __vertex.edges:
+            if not self.vertices[target].is_visited:
+                self.dfs(self.vertices[target])
 
     @property
     def vertex_count(self) -> int:
