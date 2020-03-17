@@ -32,19 +32,23 @@ class Vertex(object):
     def is_visited(self) -> bool:
         return self.visited
 
+    @property
+    def edges(self) -> List[int]:
+        return [i for i, c in enumerate(self.adjacency_matrix) if c]
+
 
 class AdjacencyMatrixGraph(object):
     def __init__(self):
         self.vertices: List[Vertex] = []
 
-    def add_vertex(self, vertex: Vertex) -> None:
-        vertex.index = self.vertex_count
-        self.vertices.append(vertex)
+    def add_vertex(self, __vertex: Vertex) -> None:
+        __vertex.index = self.vertex_count
+        self.vertices.append(__vertex)
 
-        for vertex in self.vertices:
-            while len(vertex.adjacency_matrix) - self.vertex_count:
-                vertex.adjacency_matrix.append(False)
-                vertex.weights.append(0)
+        for __vertex in self.vertices:
+            while len(__vertex.adjacency_matrix) - self.vertex_count:
+                __vertex.adjacency_matrix.append(False)
+                __vertex.weights.append(0)
 
     def print_graph(self) -> List[List[Tuple]]:
         result = []
@@ -53,14 +57,18 @@ class AdjacencyMatrixGraph(object):
             return result
 
         for vertex in self.vertices:
-            result.append(
-                [
-                    (vertex.index, index)
-                    for index, connected in enumerate(vertex.adjacency_matrix)
-                    if connected
-                ]
-            )
+            result.append([(vertex.index, target) for target in vertex.edges])
         return result
+
+    def dfs(self) -> None:
+        if self.is_empty:
+            return
+
+        for __vertex in self.vertices:
+            for target in __vertex.edges:
+                if self.vertices[target].is_visited:
+                    continue
+                self.vertices[target].visit()
 
     @property
     def vertex_count(self) -> int:
@@ -119,3 +127,7 @@ class TestCase(unittest.TestCase):
                 [(6, 3), (6, 4), (6, 5)],
             ],
         )
+
+    def test_dfs(self):
+        self.graph.dfs()
+        self.assertEqual(all([v.is_visited for v in self.graph.vertices]), True)
