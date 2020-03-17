@@ -45,7 +45,6 @@ class AdjacencyListGraph(object):
     def __init__(self) -> None:
         self.vertices: Union[Vertex, None] = None
         self.vertex_count: int = 0
-        self.bfs_queue: Deque[Vertex] = deque()
 
     def add_vertex(self, vertex: Vertex) -> None:
         if self.is_empty:
@@ -99,15 +98,17 @@ class AdjacencyListGraph(object):
             return
 
         self.vertices.visit()
-        self.bfs_queue.append(self.vertices)
-        while self.bfs_queue:
-            __vertex = self.bfs_queue.pop()
+        bfs_queue: Deque[Vertex] = deque()
+        bfs_queue.append(self.vertices)
+
+        while bfs_queue:
+            __vertex = bfs_queue.pop()
             __edge = __vertex.adjacency_list
 
             while __edge is not None:
                 if not __edge.target.is_visited:
                     __edge.target.visit()
-                    self.bfs_queue.appendleft(__edge.target)
+                    bfs_queue.appendleft(__edge.target)
                 __edge = __edge.next
 
     @property
