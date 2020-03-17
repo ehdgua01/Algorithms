@@ -46,15 +46,15 @@ class AdjacencyListGraph(object):
         self.vertices: Union[Vertex, None] = None
         self.vertex_count: int = 0
 
-    def add_vertex(self, vertex: Vertex) -> None:
+    def add_vertex(self, __vertex: Vertex) -> None:
         if self.is_empty:
-            self.vertices = vertex
+            self.vertices = __vertex
         else:
             current_vertex = self.vertices
             while current_vertex.next is not None:
                 current_vertex = current_vertex.next
-            current_vertex.next = vertex
-        vertex.index = self.vertex_count = self.vertex_count + 1
+            current_vertex.next = __vertex
+        __vertex.index = self.vertex_count = self.vertex_count + 1
 
     def print_graph(self) -> dict:
         result = {}
@@ -80,12 +80,12 @@ class AdjacencyListGraph(object):
             current_vertex = current_vertex.next
         return result
 
-    def dfs(self, vertex: Vertex = None) -> None:
+    def dfs(self, __vertex: Vertex = None) -> None:
         if self.is_empty:
             return
 
-        __vertex = vertex if vertex else self.vertices
-        __vertex.visite()
+        __vertex = __vertex if __vertex else self.vertices
+        __vertex.visit()
         __edge = __vertex.adjacency_list
 
         while __edge is not None:
@@ -110,6 +110,26 @@ class AdjacencyListGraph(object):
                     __edge.target.visit()
                     bfs_queue.appendleft(__edge.target)
                 __edge = __edge.next
+
+    def topological_sort(self, __vertex: Vertex = None) -> Union[Deque[Vertex], None]:
+        if self.is_empty:
+            return
+
+        __vertex = __vertex if __vertex else self.vertices
+        __vertex.visit()
+        __edge = __vertex.adjacency_list
+        result = deque()
+
+        while __edge is not None:
+            temp = deque()
+
+            if not __edge.target.is_visited:
+                temp.extendleft(self.topological_sort(__edge.target))
+
+            result.extendleft(temp)
+            __edge = __edge.next
+        result.appendleft(__vertex)
+        return result
 
     @property
     def is_empty(self) -> bool:
@@ -151,7 +171,7 @@ class TestCase(unittest.TestCase):
 
         vertex_f.create_edge(vertex_g, 0)
 
-    def test_print_graph(self):
+    def test_print_graph(self) -> None:
         self.assertEqual(
             self.graph.print_graph(),
             {
@@ -165,7 +185,7 @@ class TestCase(unittest.TestCase):
             },
         )
 
-    def test_dfs(self):
+    def test_dfs(self) -> None:
         self.graph.dfs()
         self.assertEqual(
             self.graph.print_graph(),
@@ -180,7 +200,7 @@ class TestCase(unittest.TestCase):
             },
         )
 
-    def test_bfs(self):
+    def test_bfs(self) -> None:
         self.graph.bfs()
         self.assertEqual(
             self.graph.print_graph(),
@@ -193,4 +213,10 @@ class TestCase(unittest.TestCase):
                 "F": {"adjacency_list": {"G": 0}, "visited": True},
                 "G": {"adjacency_list": {}, "visited": True},
             },
+        )
+
+    def test_topological_sort(self) -> None:
+        self.assertEqual(
+            [v.value for v in self.graph.topological_sort()],
+            ["A", "C", "F", "B", "D", "E", "G"],
         )

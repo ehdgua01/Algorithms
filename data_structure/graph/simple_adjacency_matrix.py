@@ -75,7 +75,7 @@ class AdjacencyMatrixGraph(object):
             if not self.vertices[target].is_visited:
                 self.dfs(self.vertices[target])
 
-    def bfs(self):
+    def bfs(self) -> None:
         if self.is_empty:
             return
 
@@ -132,7 +132,7 @@ class TestCase(unittest.TestCase):
 
         vertex_f.create_edge(vertex_g, 0)
 
-    def test_print_graph(self):
+    def test_print_graph(self) -> None:
         self.assertEqual(
             self.graph.print_graph(),
             {
@@ -146,7 +146,7 @@ class TestCase(unittest.TestCase):
             },
         )
 
-    def test_dfs(self):
+    def test_dfs(self) -> None:
         self.graph.dfs()
         self.assertEqual(
             self.graph.print_graph(),
@@ -161,7 +161,7 @@ class TestCase(unittest.TestCase):
             },
         )
 
-    def test_bfs(self):
+    def test_bfs(self) -> None:
         self.graph.bfs()
         self.assertEqual(
             self.graph.print_graph(),
