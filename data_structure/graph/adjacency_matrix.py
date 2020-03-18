@@ -2,7 +2,7 @@
 Simple adjacency matrix undirected graph
 """
 import unittest
-from typing import List, Deque, DefaultDict, Tuple, Any
+from typing import List, Deque, DefaultDict, Tuple, Any, Dict, Set
 from collections import defaultdict, deque
 
 
@@ -88,6 +88,33 @@ class AdjacencyMatrixGraph(object):
                 if not self.vertices[target].is_visited:
                     bfs_queue.appendleft(self.vertices[target])
 
+    def prim(self) -> Tuple[Dict[int, int], Dict[int, int]]:
+        g = self.edges
+        known: Set[int] = {
+            0,
+        }
+        mst: Dict[int] = {0: 0}
+        path: Dict[int] = {0: 0}
+
+        while True:
+            if len(g.keys()) == len(mst.keys()):
+                break
+
+            min_ = None
+            p, c = None, None
+
+            for i in mst:
+                for v in g[i]:
+                    if v[0] not in known and ((min_ is None) or v[1] < min_):
+                        min_ = v[1]
+                        p = i
+                        c = v
+
+            known.add(c[0])
+            mst[c[0]] = c[1]
+            path[c[0]] = p
+        return mst, path
+
     @property
     def vertex_count(self) -> int:
         return len(self.vertices)
@@ -131,21 +158,21 @@ class TestCase(unittest.TestCase):
         self.graph.add_vertex(vertex_f)
         self.graph.add_vertex(vertex_g)
 
-        vertex_a.create_edge(vertex_b, 0)
-        vertex_a.create_edge(vertex_c, 0)
+        vertex_a.create_edge(vertex_b, 35)
+        vertex_a.create_edge(vertex_c, 100)
 
-        vertex_b.create_edge(vertex_d, 0)
-        vertex_b.create_edge(vertex_e, 0)
+        vertex_b.create_edge(vertex_d, 199)
+        vertex_b.create_edge(vertex_e, 22)
 
-        vertex_c.create_edge(vertex_d, 0)
-        vertex_c.create_edge(vertex_f, 0)
+        vertex_c.create_edge(vertex_d, 33)
+        vertex_c.create_edge(vertex_f, 248)
 
-        vertex_d.create_edge(vertex_e, 0)
-        vertex_d.create_edge(vertex_g, 0)
+        vertex_d.create_edge(vertex_e, 82)
+        vertex_d.create_edge(vertex_g, 104)
 
-        vertex_e.create_edge(vertex_g, 0)
+        vertex_e.create_edge(vertex_g, 82)
 
-        vertex_f.create_edge(vertex_g, 0)
+        vertex_f.create_edge(vertex_g, 123)
 
     def test_print_graph(self) -> None:
         self.assertEqual(
@@ -190,3 +217,8 @@ class TestCase(unittest.TestCase):
                 "G": {"visited": True, "edges": [(6, 3), (6, 4), (6, 5)]},
             },
         )
+
+    def test_prim(self) -> None:
+        mst, path = self.graph.prim()
+        self.assertEqual(path, {0: 0, 1: 0, 4: 1, 6: 4, 5: 6, 2: 3, 3: 4})
+        self.assertEqual(sum(mst.values()), 377)
