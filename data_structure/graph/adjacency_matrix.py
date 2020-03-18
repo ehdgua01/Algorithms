@@ -149,6 +149,25 @@ class AdjacencyMatrixGraph(object):
                 path[x[1]] = x[0]
         return mst, path
 
+    def dijkstra(self, start: int = None):
+        g = self.edges
+        mst: Dict[int] = {start or 0: 0}
+        path: Dict[int] = {start or 0: 0}
+        known: Set[int] = set()
+
+        while True:
+            if len(known) == len(g.keys()):
+                break
+
+            for i in set(mst.keys()) - known:
+                for v in g[i]:
+                    weight = mst.get(v[0], None)
+                    if (weight is None) or ((mst[i] + v[1]) < weight):
+                        mst[v[0]] = mst[i] + v[1]
+                        path[v[0]] = i
+                known.add(i)
+        return mst, path
+
     @property
     def vertex_count(self) -> int:
         return len(self.vertices)
@@ -264,3 +283,8 @@ class TestCase(unittest.TestCase):
         mst, path = self.graph.kruskal()
         self.assertEqual(path, {0: 1, 1: 4, 2: 3, 3: 4, 4: 6, 5: 6})
         self.assertEqual(sum(mst.values()), 377)
+
+    def test_dijkstra(self) -> None:
+        mst, path = self.graph.dijkstra(5)
+        self.assertEqual(mst, {5: 0, 2: 248, 6: 123, 4: 205, 3: 227, 1: 227, 0: 262})
+        self.assertEqual(path, {5: 0, 2: 5, 6: 5, 4: 6, 3: 6, 1: 4, 0: 1})
