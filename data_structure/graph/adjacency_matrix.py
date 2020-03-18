@@ -90,13 +90,13 @@ class AdjacencyMatrixGraph(object):
                 if not self.vertices[target].is_visited:
                     bfs_queue.appendleft(self.vertices[target])
 
-    def prim(self) -> Tuple[Dict[int, int], Dict[int, int]]:
+    def prim(self, start: int = None) -> Tuple[Dict[int, int], Dict[int, int]]:
         g = self.edges
         known: Set[int] = {
-            0,
+            start or 0,
         }
-        mst: Dict[int] = {0: 0}
-        path: Dict[int] = {0: 0}
+        mst: Dict[int] = {start or 0: 0}
+        path: Dict[int] = {start or 0: 0}
 
         while True:
             if len(g.keys()) == len(mst.keys()):
@@ -255,6 +255,9 @@ class TestCase(unittest.TestCase):
     def test_prim(self) -> None:
         mst, path = self.graph.prim()
         self.assertEqual(path, {0: 0, 1: 0, 4: 1, 6: 4, 5: 6, 2: 3, 3: 4})
+        self.assertEqual(sum(mst.values()), 377)
+        mst, path = self.graph.prim(1)
+        self.assertEqual(path, {1: 0, 4: 1, 0: 1, 3: 4, 2: 3, 6: 4, 5: 6})
         self.assertEqual(sum(mst.values()), 377)
 
     def test_kruskal(self) -> None:
