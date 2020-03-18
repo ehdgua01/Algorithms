@@ -4,6 +4,8 @@ Simple adjacency matrix undirected graph
 import unittest
 from typing import List, Deque, DefaultDict, Tuple, Any, Dict, Set
 from collections import defaultdict, deque
+from functools import reduce
+from operator import iconcat
 
 
 class Vertex(object):
@@ -115,6 +117,38 @@ class AdjacencyMatrixGraph(object):
             path[c[0]] = p
         return mst, path
 
+    def kruskal(self) -> Tuple[Dict[int, int], Dict[int, int]]:
+        g = self.edges
+        e: List[Tuple] = sorted(
+            reduce(iconcat, [[(k, v[0], v[1]) for v in g[k]] for k in g.keys()], []),
+            key=lambda v: v[2],
+            reverse=True,
+        )
+        mst = {}
+        path = {}
+        s = [{i} for i in g.keys()]
+
+        while True:
+            if len(s) == 1:
+                break
+
+            x = e.pop()
+            from_, to = None, None
+
+            for index, v in enumerate(s):
+                if x[0] in v:
+                    from_ = index
+
+                if x[1] in v:
+                    to = index
+
+            if from_ != to:
+                s[from_].update(s[to])
+                s.pop(to)
+                mst[x[1]] = x[2]
+                path[x[1]] = x[0]
+        return mst, path
+
     @property
     def vertex_count(self) -> int:
         return len(self.vertices)
@@ -221,4 +255,9 @@ class TestCase(unittest.TestCase):
     def test_prim(self) -> None:
         mst, path = self.graph.prim()
         self.assertEqual(path, {0: 0, 1: 0, 4: 1, 6: 4, 5: 6, 2: 3, 3: 4})
+        self.assertEqual(sum(mst.values()), 377)
+
+    def test_kruskal(self) -> None:
+        mst, path = self.graph.kruskal()
+        self.assertEqual(path, {0: 1, 1: 4, 2: 3, 3: 4, 4: 6, 5: 6})
         self.assertEqual(sum(mst.values()), 377)
