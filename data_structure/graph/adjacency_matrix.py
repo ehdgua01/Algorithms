@@ -2,7 +2,7 @@
 Simple adjacency matrix undirected graph
 """
 import unittest
-from typing import List, Deque, Any
+from typing import List, Deque, DefaultDict, Tuple, Any
 from collections import defaultdict, deque
 
 
@@ -95,6 +95,21 @@ class AdjacencyMatrixGraph(object):
     @property
     def is_empty(self) -> bool:
         return self.vertices is None
+
+    @property
+    def edges(self) -> DefaultDict[int, List[Tuple[int]]]:
+        """
+        return all edges (target node index, weight)
+        :return: {
+            "0": [[1, 32]]  # [[node index, weight]]
+        }
+        """
+        g = defaultdict(list)
+
+        for v in self.vertices:
+            for i in v.edges:
+                g[v.index].append((i, v.weights[i]))
+        return g
 
 
 class TestCase(unittest.TestCase):
