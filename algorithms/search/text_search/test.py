@@ -3,6 +3,7 @@ from string import ascii_lowercase
 
 from .native_search import native_search
 from .rabin_karp import rabin_karp
+from .knuth_morris_pratt import knuth_morris_pratt
 
 
 class AbstractTestCase(unittest.TestCase):
@@ -41,3 +42,8 @@ class TestNativeSearch(AbstractTestCase):
 class TestRabinKarp(AbstractTestCase):
     def setUp(self) -> None:
         self.func = rabin_karp
+
+
+class TestKnuthMorrisPratt(AbstractTestCase):
+    def setUp(self) -> None:
+        self.func = knuth_morris_pratt
