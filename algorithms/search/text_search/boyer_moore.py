@@ -14,7 +14,7 @@ def boyer_moore(text: str, pattern: str, offset: int = 0) -> Dict[str, Union[str
 
     i = offset
 
-    while i < (len(text) - len(pattern) - 1):
+    while i < (len(text) - len(pattern) + 1):
         mismatch_index, match_index = -1, -1
 
         for p in range(len(pattern) - 1, -1, -1):
