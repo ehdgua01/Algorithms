@@ -2,6 +2,7 @@ import unittest
 from typing import List
 
 from .simple_lcs import simple_lcs
+from .lcs import lcs
 
 
 class TestCase(unittest.TestCase):
@@ -16,6 +17,18 @@ class TestCase(unittest.TestCase):
     def test_simple_lcs(self) -> None:
         self.assertEqual(
             simple_lcs(
+                self.first_string,
+                self.second_string,
+                len(self.first_string),
+                len(self.second_string),
+                self.result_matrix,
+            ),
+            6,
+        )
+
+    def test_lcs(self) -> None:
+        self.assertEqual(
+            lcs(
                 self.first_string,
                 self.second_string,
                 len(self.first_string),
