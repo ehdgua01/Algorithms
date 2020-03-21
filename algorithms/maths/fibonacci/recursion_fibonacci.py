@@ -1,4 +1,4 @@
-def recursion_fibonacci(number: int):
+def recursion_fibonacci(number: int) -> int:
     if number == 0:
         return 0
     elif number in [1, 2]:

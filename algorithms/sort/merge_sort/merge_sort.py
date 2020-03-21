@@ -1,4 +1,7 @@
-def merge_sort(data: list, left: int, right: int):
+from typing import Union
+
+
+def merge_sort(data: list, left: int, right: int) -> Union[list, None]:
     if (right - left) < 2:
         return
 
