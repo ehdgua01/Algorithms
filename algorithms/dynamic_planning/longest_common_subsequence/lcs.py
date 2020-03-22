@@ -1,7 +1,9 @@
 from typing import List
 
 
-def lcs(x: str, y: str, i: int, j: int, data: List[List[int]]) -> int:
+def lcs(x: str, y: str, data: List[List[int]]) -> int:
+    i, j = len(x), len(y)
+
     for m in range(1, i + 1):
         for n in range(1, j + 1):
             if x[m - 1] == y[n - 1]:
