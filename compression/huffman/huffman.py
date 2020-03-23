@@ -1,14 +1,14 @@
 from typing import Tuple, Dict, Union
 from collections import Counter
+from queue import PriorityQueue
 
 
 class Node(object):
-    def __init__(self, value: Union[str, None], freq: int):
+    def __init__(self, value: Union[str, None], bitstring=None, left=None, right=None):
         self.value = value
-        self.freq = freq
-        self.bitstring: str = ""
-        self.left: Union[Node, None] = None
-        self.right: Union[Node, None] = None
+        self.bitstring: str = bitstring
+        self.left: Union[Node, None] = left
+        self.right: Union[Node, None] = right
 
     @property
     def is_identifier(self) -> bool:
@@ -17,6 +17,15 @@ class Node(object):
     @property
     def is_leaf(self) -> bool:
         return (self.left or self.right) is None
+
+    def __eq__(self, other):
+        if other.value is None:
+            return self
+        else:
+            if other.value < self.value:
+                return self
+            else:
+                return other
 
 
 def create_prefix_table(prefix_tree: Node, bitstring="") -> Dict[str, str]:
@@ -34,15 +43,20 @@ def huffman_encode(string: str) -> Tuple[str, Node]:
     freq = Counter(string)
     prefix_tree = None
     encoded = ""
+    priority_queue = PriorityQueue()
 
-    for k, v in sorted(freq.items(), key=lambda x: x[1]):
-        if prefix_tree is None:
-            prefix_tree = Node(k, v)
-        else:
-            parent = Node(None, prefix_tree.freq + v)
-            parent.left = Node(k, v)
-            parent.right = prefix_tree
-            prefix_tree = parent
+    for k, v in freq.items():
+        priority_queue.put((v, Node(k)))
+
+    while True:
+        if priority_queue.qsize() == 1:
+            prefix_tree = priority_queue.get()[1]
+            break
+
+        left = priority_queue.get()
+        right = priority_queue.get()
+        parent = Node(None, left=left[1], right=right[1])
+        priority_queue.put((left[0] + right[0], parent))
 
     prefix_table = create_prefix_table(prefix_tree)
 
