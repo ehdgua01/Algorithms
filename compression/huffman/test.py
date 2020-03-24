@@ -10,6 +10,7 @@ class TestCase(unittest.TestCase):
         decoded = huffman_decode(encoded, prefix_tree)
         self.assertEqual(decoded, "aaabbaaccdeaf")
 
+    def test_same_value_data(self):
         encoded, prefix_tree = huffman_encode("ppppppppppp")
         self.assertEqual(encoded, "00000000000")
         decoded = huffman_decode(encoded, prefix_tree)
