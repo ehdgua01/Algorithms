@@ -74,6 +74,9 @@ def huffman_decode(encoded: str, prefix_tree: Node) -> str:
     decoded = ""
     temp = prefix_tree
 
+    if temp.is_leaf:
+        return temp.value * len(encoded)
+
     for c in encoded:
         if c == "1":
             temp = temp.right
