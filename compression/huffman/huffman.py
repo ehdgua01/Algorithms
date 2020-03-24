@@ -21,6 +21,8 @@ class Node(object):
     def __eq__(self, other):
         if other.value is None:
             return self
+        elif self.value is None:
+            return other
         else:
             if other.value < self.value:
                 return self
@@ -41,7 +43,6 @@ def create_prefix_table(prefix_tree: Node, bitstring="") -> Dict[str, str]:
 
 def huffman_encode(string: str) -> Tuple[str, Node]:
     freq = Counter(string)
-    prefix_tree = None
     encoded = ""
     priority_queue = PriorityQueue()
 
@@ -58,7 +59,10 @@ def huffman_encode(string: str) -> Tuple[str, Node]:
         parent = Node(None, left=left[1], right=right[1])
         priority_queue.put((left[0] + right[0], parent))
 
-    prefix_table = create_prefix_table(prefix_tree)
+    if prefix_tree.is_identifier:
+        prefix_table = {prefix_tree.value: "0"}
+    else:
+        prefix_table = create_prefix_table(prefix_tree)
 
     for c in string:
         encoded += prefix_table[c]
@@ -66,6 +70,17 @@ def huffman_encode(string: str) -> Tuple[str, Node]:
     return encoded, prefix_tree
 
 
-def huffman_decode(encoded: str) -> str:
-    decoded = encoded
+def huffman_decode(encoded: str, prefix_tree: Node) -> str:
+    decoded = ""
+    temp = prefix_tree
+
+    for c in encoded:
+        if c == "1":
+            temp = temp.right
+        else:
+            temp = temp.left
+
+        if temp.is_leaf:
+            decoded += temp.value
+            temp = prefix_tree
     return decoded
