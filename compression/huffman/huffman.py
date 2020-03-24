@@ -10,14 +10,6 @@ class Node(object):
         self.left: Union[Node, None] = left
         self.right: Union[Node, None] = right
 
-    @property
-    def is_identifier(self) -> bool:
-        return self.value is not None
-
-    @property
-    def is_leaf(self) -> bool:
-        return (self.left or self.right) is None
-
     def __eq__(self, other):
         if other.value is None:
             return self
@@ -28,6 +20,14 @@ class Node(object):
                 return self
             else:
                 return other
+
+    @property
+    def is_identifier(self) -> bool:
+        return self.value is not None
+
+    @property
+    def is_leaf(self) -> bool:
+        return (self.left or self.right) is None
 
 
 def create_prefix_table(prefix_tree: Node, bitstring="") -> Dict[str, str]:
