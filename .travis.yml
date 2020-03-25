@@ -3,7 +3,7 @@ python:
   - "3.8"
 install:
   - pip install pytest
-  - pip install black
+  - pip install flake8
 script:
-  - black .
+  - flake8
   - pytest
