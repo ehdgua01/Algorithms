@@ -5,13 +5,6 @@ from .binary_search_tree import Node, BinarySearchTree
 
 class TestCase(unittest.TestCase):
     def test_binary_search_tree(self):
-        """
-             D
-           /  \
-          B    F
-         / \  / \
-        A  C E  G
-        """
         bst = BinarySearchTree()
         a = Node("A")
         b = Node("B")
@@ -49,50 +42,22 @@ class TestCase(unittest.TestCase):
 
         # 탐색 알고리즘 테스트
         self.assertIsNone(bst.search("H"))
-        self.assertEqual(
-            bst.search("G", collection=bst.root), g,
-        )
-        self.assertEqual(
-            bst.search("D", collection=bst.root), d,
-        )
-        self.assertEqual(
-            bst.search("C", collection=bst.root), c,
-        )
+        self.assertEqual(bst.search("G", collection=bst.root), g)
+        self.assertEqual(bst.search("D", collection=bst.root), d)
+        self.assertEqual(bst.search("C", collection=bst.root), c)
 
         # 제거 알고리즘 테스트
-        """
-        서브 트리 노드 제거 테스트
-             D
-           /  \
-          B    G
-         / \  /
-        A  C E
-        """
         bst.remove("F")
         self.assertEqual(bst.root.right, g)
         self.assertEqual(bst.root.right.left, e)
 
-        """
-        루트 노드 제거 테스트
-             E
-           /  \
-          B    G
-         / \
-        A  C
-        """
+        # 루트 노드 제거 테스트
         bst.remove("D")
         self.assertEqual(bst.root, e)
         self.assertEqual(bst.root.right, g)
         self.assertEqual(bst.root.left, b)
 
-        """
-        잎 노드 제거 테스트
-             E
-           /  \
-          B    G
-         /
-        A 
-        """
+        # 잎 노드 제거 테스트
         bst.remove("C")
         self.assertIsNone(bst.root.left.right)
         self.assertEqual(bst.root.left, b)

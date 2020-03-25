@@ -5,8 +5,8 @@ https://programmers.co.kr/learn/courses/30/lessons/42588
 """
 
 
-def solution(heights: list):
-    answer = []
+def solution(heights: list) -> list:
+    answer: list = []
     heights.reverse()
 
     for idx, height in enumerate(heights, start=1):

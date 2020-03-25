@@ -6,7 +6,7 @@ from .simple_binary_tree import (
     in_order_tree,
     post_order_tree,
     destroy_tree,
-    is_full_binary_tree,
+    is_full,
 )
 
 
@@ -37,13 +37,9 @@ class TestCase(unittest.TestCase):
         self.assertEqual(post_order_tree(self.root), "CDBFGEA")
 
     def test_is_full_binary_tree(self):
-        self.assertEqual(
-            is_full_binary_tree(self.root), True,
-        )
+        self.assertEqual(is_full(self.root), True)
         self.node_e.right = None
-        self.assertEqual(
-            is_full_binary_tree(self.root), False,
-        )
+        self.assertEqual(is_full(self.root), False)
 
     def test_destroy_tree(self):
         destroy_tree(self.root)

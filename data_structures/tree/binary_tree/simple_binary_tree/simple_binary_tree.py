@@ -42,11 +42,11 @@ def post_order_tree(node: Node) -> str:
     return result
 
 
-def is_full_binary_tree(node) -> bool:
+def is_full(node) -> bool:
     if (node.left is None) and (node.right is None):
         return True
     elif (node.left is not None) and (node.right is not None):
-        return is_full_binary_tree(node.left) and is_full_binary_tree(node.right)
+        return is_full(node.left) and is_full(node.right)
     return False
 
 

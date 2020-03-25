@@ -31,9 +31,22 @@ class TestCase(unittest.TestCase):
 
         append(node_a, node_e)
         tree = print_tree(self.root)
+        # fmt: off
         self.assertEqual(
-            tree, {"Root": {"A": {"E": "last",}, "B": {"C": "last", "D": "last",},},}
+            tree,
+            {
+                "Root": {
+                    "A": {
+                        "E": "last",
+                    },
+                    "B": {
+                        "C": "last",
+                        "D": "last",
+                    },
+                },
+            }
         )
+        # fmt: on
 
         destroy(self.root)
         self.assertIsNone(self.root.child)

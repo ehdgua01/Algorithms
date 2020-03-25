@@ -42,13 +42,13 @@ class BinarySearchTree(object):
                     collection = collection.left
                 else:
                     return collection
-            return self.find_index(target, collection=collection,)
+            return self.find_index(target, collection=collection)
 
     def insert(self, node: Node, /) -> None:
         if self.is_empty:
             self.root = node
         else:
-            index = self.find_index(node, collection=self.root,)
+            index = self.find_index(node, collection=self.root)
             node.parent = index
             if index.value < node.value:
                 index.right = node
@@ -62,15 +62,15 @@ class BinarySearchTree(object):
             if collection.value == target:
                 return collection
             elif collection.value < target:
-                return self.search(target, collection=collection.right,)
+                return self.search(target, collection=collection.right)
             else:
-                return self.search(target, collection=collection.left,)
+                return self.search(target, collection=collection.left)
 
     def remove(self, target, /):
         if self.is_empty:
             return None
 
-        collection = self.search(target, collection=self.root,)
+        collection = self.search(target, collection=self.root)
 
         if collection is None:
             return None
