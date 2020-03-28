@@ -7,18 +7,18 @@ https://programmers.co.kr/learn/courses/30/lessons/42585
 
 def solution(arrangement: str) -> int:
     answer = 0
-    pipes = []
+    pipes = 0
     is_laser = False
 
     for a in arrangement:
         if a == ")":
             if is_laser:
-                answer += len(pipes) - 1
+                answer += pipes - 1
                 is_laser = False
             else:
                 answer += 1
-            pipes.pop()
+            pipes -= 1
         else:
-            pipes.append("(")
+            pipes += 1
             is_laser = True
     return answer
