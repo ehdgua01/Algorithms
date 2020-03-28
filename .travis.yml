@@ -5,6 +5,8 @@ install:
   # pyflakes hasn't bumped the version in setup.py
   - pip install git+https://github.com/pycqa/pyflakes
   - pip install -r requirements.txt
+before_script:
+  - black --check .
 script:
   - flake8 .
   - pytest
