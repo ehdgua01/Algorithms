@@ -6,9 +6,9 @@ https://programmers.co.kr/learn/courses/30/lessons/42585
 
 
 def solution(arrangement: str) -> int:
-    answer = 0
-    pipes = 0
-    is_laser = False
+    answer: int = 0
+    pipes: int = 0
+    is_laser: bool = False
 
     for a in arrangement:
         if a == ")":
