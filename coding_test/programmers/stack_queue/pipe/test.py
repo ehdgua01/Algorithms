@@ -4,7 +4,7 @@ from .pipe import solution
 
 
 class TestCase(unittest.TestCase):
-    def test_solution(self):
+    def test_solution(self) -> None:
         self.assertEqual(solution("()(((()())(())()))(())"), 17)
         self.assertEqual(solution("()"), 0)
         self.assertEqual(solution("(())((()()))"), 8)
