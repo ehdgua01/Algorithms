@@ -12,12 +12,12 @@ def solution(arrangement: str) -> int:
 
     for a in arrangement:
         if a == ")":
+            pipes -= 1
             if is_laser:
-                answer += pipes - 1
+                answer += pipes
                 is_laser = False
             else:
                 answer += 1
-            pipes -= 1
         else:
             pipes += 1
             is_laser = True
