@@ -1,4 +1,5 @@
 from typing import List, Union
+from math import floor, sqrt
 
 
 class LinearProbingHashTable(object):
@@ -11,14 +12,19 @@ class LinearProbingHashTable(object):
         value = value if value != 0 else self.__size
         return value % self.__size
 
-    def is_prime(self, value: int) -> bool:
-        if value in [0, 1, 2, 3, 5]:
+    def is_prime(self, number: int) -> bool:
+        if number <= 1:
+            return False
+        elif number == 2:
             return True
-        else:
-            for i in range(2, value):
-                if value % i == 0:
-                    return False
-            return True
+        elif 2 < number and number % 2 == 0:
+            return False
+
+        max_div = floor(sqrt(number))
+        for i in range(3, 1 + max_div, 2):
+            if number % i == 0:
+                return False
+        return True
 
     def next_prime(self, start: int) -> int:
         start += 1
