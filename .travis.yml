@@ -2,8 +2,6 @@ language: python
 python: "3.8"
 cache: pip
 install:
-  # pyflakes hasn't bumped the version in setup.py
-  - pip install git+https://github.com/pycqa/pyflakes
   - pip install -r requirements.txt
 before_script:
   - black --check .
