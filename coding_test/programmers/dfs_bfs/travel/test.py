@@ -9,6 +9,8 @@ class TestCase(unittest.TestCase):
             solution([["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]]),
             ["ICN", "JFK", "HND", "IAD"],
         )
+
+    def test_case_2(self):
         self.assertEqual(
             solution(
                 [
@@ -20,4 +22,10 @@ class TestCase(unittest.TestCase):
                 ]
             ),
             ["ICN", "ATL", "ICN", "SFO", "ATL", "SFO"],
+        )
+
+    def test_case_3(self):
+        self.assertEqual(
+            solution([["ICN", "B"], ["ICN", "A"], ["A", "C"], ["B", "ICN"]]),
+            ["ICN", "B", "ICN", "A", "C"],
         )
