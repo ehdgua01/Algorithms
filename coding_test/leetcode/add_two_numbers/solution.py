@@ -7,40 +7,18 @@ class ListNode:
 
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
-        answer = None
-        carry = False
-        a = l1
-        b = l2
+        carry, new_value = divmod(l1.val + l2.val + 0, 10)
+        answer = ListNode(new_value)
+        tail = answer
 
-        while a or b or carry:
-            val1 = 0
-            val2 = 0
+        while l1.next or l2.next or carry:
+            a = l1.next.val if l1.next else 0
+            b = l2.next.val if l2.next else 0
+            carry, new_value = divmod(a + b + carry, 10)
 
-            if a:
-                val1 = a.val
-                a = a.next
+            tail.next = ListNode(new_value)
+            tail = tail.next
 
-            if b:
-                val2 = b.val
-                b = b.next
-
-            new_value = val1 + val2
-
-            if carry:
-                new_value += 1
-
-            if 9 < new_value:
-                carry = True
-                new_value = new_value % 10
-            else:
-                carry = False
-
-            if answer is None:
-                answer = ListNode(new_value)
-            else:
-                temp = answer
-                while temp.next is not None:
-                    temp = temp.next
-                temp.next = ListNode(new_value)
-
+            l1 = l1.next if l1.next else l1
+            l2 = l2.next if l2.next else l2
         return answer
