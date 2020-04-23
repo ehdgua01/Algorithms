@@ -4,7 +4,7 @@ from .solution import Solution, ListNode
 
 
 class TestCase(unittest.TestCase):
-    def test_case_1(self):
+    def test_case_1(self) -> None:
         node1 = ListNode(2)
         node1.next = ListNode(4)
         node1.next.next = ListNode(3)
@@ -18,7 +18,7 @@ class TestCase(unittest.TestCase):
         self.assertEqual(answer.next.val, 0)
         self.assertEqual(answer.next.next.val, 8)
 
-    def test_case_2(self):
+    def test_case_2(self) -> None:
         node1 = ListNode(2)
         node1.next = ListNode(4)
         node1.next.next = ListNode(3)
