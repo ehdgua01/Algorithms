@@ -3,21 +3,38 @@ from typing import List
 
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
-        a, b = 0, 0
-        i, j, h = 0, 0, (len(nums1) + len(nums2)) // 2
+        m, n = len(nums1), len(nums2)
 
-        while i + j <= h:
-            if i < len(nums1) and j < len(nums2):
-                if nums1[i] < nums2[j]:
-                    a, b = b, nums1[i]
-                    i += 1
-                else:
-                    a, b = b, nums2[j]
-                    j += 1
-            elif i < len(nums1):
-                a, b = b, nums1[i]
-                i += 1
+        if n < m:
+            nums1, nums2, m, n = nums2, nums1, n, m
+
+        imin, imax, half_len = 0, m, (m + n + 1) // 2
+
+        while imin <= imax:
+            i = (imin + imax) // 2
+            j = half_len - i
+
+            if i < m and nums1[i] < nums2[j - 1]:
+                imin = i + 1
+            elif 0 < i and nums2[j] < nums1[i - 1]:
+                imax = i - 1
             else:
-                a, b = b, nums2[j]
-                j += 1
-        return b if (len(nums1) + len(nums2)) % 2 == 1 else (a + b) / 2
+                max_left = (
+                    max(nums1[i - 1], nums2[j - 1])
+                    if i and j
+                    else nums1[i - 1]
+                    if i
+                    else nums2[j - 1]
+                )
+
+                if (m + n) % 2 == 1:
+                    return max_left
+
+                min_right = (
+                    min(nums1[i], nums2[j])
+                    if i != m and j != n
+                    else nums2[j]
+                    if i == m
+                    else nums1[i]
+                )
+                return (max_left + min_right) / 2
