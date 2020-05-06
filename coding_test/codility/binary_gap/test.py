@@ -4,7 +4,7 @@ from .solution import solution
 
 
 class TestCase(unittest.TestCase):
-    def test_case_1(self):
+    def test_case_1(self) -> None:
         self.assertEqual(solution(9), 2)
         self.assertEqual(solution(529), 4)
         self.assertEqual(solution(20), 1)
