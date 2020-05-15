@@ -18,3 +18,7 @@ class TestCase(unittest.TestCase):
         self.assertEqual(recursion_factorial(2), 2)
         self.assertEqual(recursion_factorial(1), 1)
         self.assertEqual(recursion_factorial(0), 1)
+
+    def test_value_error(self) -> None:
+        self.assertRaises(ValueError, factorial, n=-1)
+        self.assertRaises(ValueError, recursion_factorial, n=-1)

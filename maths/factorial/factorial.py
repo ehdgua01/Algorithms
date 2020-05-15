@@ -1,5 +1,7 @@
 def factorial(n: int) -> int:
-    if n < 2:
+    if n < 0:
+        raise ValueError("Required positive number")
+    elif n < 2:
         return 1
 
     result = 1
