@@ -4,7 +4,7 @@ from .bubble_sort import bubble_sort
 
 
 class TestCase(unittest.TestCase):
-    def test_bubble_sort(self):
+    def test_bubble_sort(self) -> None:
         self.assertEqual(bubble_sort([1]), [1])
         self.assertEqual(bubble_sort([]), [])
         self.assertEqual(
