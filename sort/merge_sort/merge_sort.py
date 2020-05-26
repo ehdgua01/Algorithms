@@ -1,9 +1,9 @@
-from typing import Union, List, Any
+from typing import List, Any
 
 
-def merge_sort(data: List[Any], left: int, right: int) -> Union[List[Any], None]:
+def merge_sort(data: List[Any], left: int, right: int) -> List[Any]:
     if (right - left) < 2:
-        return
+        return data
 
     a = left
     b = middle = (right + left) // 2
