@@ -59,7 +59,7 @@ def partition(data: list, left: int, right: int):
     return lessor
 
 
-def stack_quick_sort(data: list) -> None:
+def stack_quick_sort(data: list) -> list:
     lesser = 0
     greater = len(data) - 1
     s = Stack()
@@ -71,3 +71,4 @@ def stack_quick_sort(data: list) -> None:
             s.push(Node((pivot + 1, greater)))
             greater = pivot - 1
         lesser, greater = s.pop()
+    return data

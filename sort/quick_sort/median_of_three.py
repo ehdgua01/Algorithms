@@ -4,16 +4,18 @@
 """
 
 
-def median_of_three_quick_sort(data: list, left: int, right: int):
+def median_of_three_quick_sort(data: list, left: int, right: int) -> list:
     if right <= left:
-        return
+        return data
 
     lesser = index = left
-    median = data[round((left + right) / 2)]
+    median = data[(left + right) // 2]
     pivot = data[
-        (data[left] + data[right] + median)
-        - max([data[left], data[right], median])
-        - min([data[left], data[right], median])
+        data.index(
+            (data[left] + data[right] + median)
+            - max([data[left], data[right], median])
+            - min([data[left], data[right], median])
+        )
     ]
     greater = right
 
@@ -30,3 +32,4 @@ def median_of_three_quick_sort(data: list, left: int, right: int):
 
     median_of_three_quick_sort(data, left, lesser - 1)
     median_of_three_quick_sort(data, greater + 1, right)
+    return data

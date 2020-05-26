@@ -1,6 +1,6 @@
-def quick_sort(data: list, left: int, right: int):
+def quick_sort(data: list, left: int, right: int) -> list:
     if right <= left:
-        return
+        return data
 
     lesser = index = left
     pivot = data[left]
@@ -19,3 +19,4 @@ def quick_sort(data: list, left: int, right: int):
 
     quick_sort(data, left, lesser - 1)
     quick_sort(data, greater + 1, right)
+    return data

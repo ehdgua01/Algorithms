@@ -5,12 +5,12 @@
 import random
 
 
-def random_pivot_quick_sort(data: list, left: int, right: int):
+def random_pivot_quick_sort(data: list, left: int, right: int) -> list:
     if right <= left:
-        return
+        return data
 
     lesser = index = left
-    pivot = random.randint(left, right)
+    pivot = data[random.randint(left, right)]
     greater = right
 
     while index <= greater:
@@ -26,3 +26,4 @@ def random_pivot_quick_sort(data: list, left: int, right: int):
 
     random_pivot_quick_sort(data, left, lesser - 1)
     random_pivot_quick_sort(data, greater + 1, right)
+    return data

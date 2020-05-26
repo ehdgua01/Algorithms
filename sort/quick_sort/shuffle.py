@@ -7,6 +7,6 @@ import random
 from .quick_sort import quick_sort
 
 
-def shuffle_quick_sort(data):
+def shuffle_quick_sort(data) -> list:
     random.shuffle(data)
-    quick_sort(data, 0, len(data) - 1)
+    return quick_sort(data, 0, len(data) - 1)
