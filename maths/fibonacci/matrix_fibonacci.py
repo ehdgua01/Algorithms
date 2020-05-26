@@ -5,6 +5,8 @@ MatrixType = List[List[int]]
 
 
 def matrix_fibonacci(number: int) -> int:
+    if number < 2:
+        return number
     return matrix_power([[1, 1], [1, 0]], number)[0][1]
 
 
