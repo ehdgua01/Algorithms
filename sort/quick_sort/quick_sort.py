@@ -1,4 +1,7 @@
-def quick_sort(data: list, left: int, right: int) -> list:
+from typing import List, Any
+
+
+def quick_sort(data: List[Any], left: int, right: int) -> List[Any]:
     if right <= left:
         return data
 

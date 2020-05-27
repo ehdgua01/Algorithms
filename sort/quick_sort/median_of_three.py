@@ -2,9 +2,10 @@
 퀵 정렬의 최악의 경우를 피하는 방법
 기준 요소를 평균값으로 결정하여 정렬한다.
 """
+from typing import List, Any
 
 
-def median_of_three_quick_sort(data: list, left: int, right: int) -> list:
+def median_of_three_quick_sort(data: List[Any], left: int, right: int) -> List[Any]:
     if right <= left:
         return data
 

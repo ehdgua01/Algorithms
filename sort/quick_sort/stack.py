@@ -1,6 +1,7 @@
 """
 대용량의 데이터를 정렬하는데 부적합한 퀵 정렬을 개선
 """
+from typing import List, Any
 
 
 class Node(object):
@@ -14,7 +15,7 @@ class Stack(object):
         self.top = None
         self.size = 0
 
-    def pop(self):
+    def pop(self) -> Any:
         if self.is_empty:
             raise Exception("Stack is empty")
         data = self.top.data
@@ -32,7 +33,7 @@ class Stack(object):
             self.top = new
         self.size += 1
 
-    def peek(self):
+    def peek(self) -> Any:
         return None if self.is_empty else self.top.data
 
     @property
@@ -40,7 +41,7 @@ class Stack(object):
         return self.top is None
 
 
-def partition(data: list, left: int, right: int):
+def partition(data: List[Any], left: int, right: int) -> int:
     lessor = index = left
     pivot = data[lessor]
     greater = right
@@ -59,7 +60,7 @@ def partition(data: list, left: int, right: int):
     return lessor
 
 
-def stack_quick_sort(data: list) -> list:
+def stack_quick_sort(data: List[Any]) -> List[Any]:
     lesser = 0
     greater = len(data) - 1
     s = Stack()
