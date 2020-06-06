@@ -3,16 +3,12 @@ from typing import List
 
 def solution(N: int, A: List[int]) -> List[int]:
     counters = [0] * N
-    max_counter = True
-    max_ = 0
+    max_ = max_counter = 0
 
     for X in A:
         if X == N + 1:
-            if max_counter is False:
-                counters = [max_] * N
+            max_counter = max_
         else:
-            counters[X - 1] += 1
-            max_counter = False
-            if max_ < counters[X - 1]:
-                max_ = counters[X - 1]
-    return counters
+            current = counters[X - 1] = max(counters[X - 1] + 1, max_counter + 1)
+            max_ = max(current, max_)
+    return [c if c > max_counter else max_counter for c in counters]
