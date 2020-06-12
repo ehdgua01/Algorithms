@@ -1,16 +1,18 @@
-from typing import Tuple, Dict, Union
+from typing import Tuple, Dict, Union, Any
 from collections import Counter
 from queue import PriorityQueue
 
 
 class Node(object):
-    def __init__(self, value: Union[str, None], bitstring=None, left=None, right=None):
+    def __init__(
+        self, value: Union[str, None], bitstring=None, left=None, right=None
+    ) -> None:
         self.value = value
         self.bitstring: str = bitstring
         self.left: Union[Node, None] = left
         self.right: Union[Node, None] = right
 
-    def __eq__(self, other):
+    def __eq__(self, other) -> Any:
         if other.value is None:
             return self
         elif self.value is None:
