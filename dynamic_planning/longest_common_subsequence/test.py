@@ -49,6 +49,7 @@ class TestCase(unittest.TestCase):
 
     def test_lcs(self) -> None:
         self.assertEqual(
-            lcs(self.first_string, self.second_string, self.result_matrix), 6,
+            lcs(self.first_string, self.second_string, self.result_matrix),
+            6,
         )
         self.assertEqual(self.subsequence, "GNINRO")

@@ -8,7 +8,8 @@ class TestCase(unittest.TestCase):
         self.assertEqual(selection_sort([1]), [1])
         self.assertEqual(selection_sort([]), [])
         self.assertEqual(
-            selection_sort([8, 9, 4, 1, 5, 6, 7, 2, 3]), [1, 2, 3, 4, 5, 6, 7, 8, 9],
+            selection_sort([8, 9, 4, 1, 5, 6, 7, 2, 3]),
+            [1, 2, 3, 4, 5, 6, 7, 8, 9],
         )
         self.assertEqual(
             selection_sort([1, 1, 2, 1, 2, 1, 2, 2, 1, 2]),

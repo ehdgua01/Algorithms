@@ -15,9 +15,14 @@ class TestCase(unittest.TestCase):
 
     def test_binary_search(self):
         self.assertRaises(
-            Exception, binary_search, data=[1, 3, 2], size=3, target=2,
+            Exception,
+            binary_search,
+            data=[1, 3, 2],
+            size=3,
+            target=2,
         )
         self.assertIsNone(binary_search(self.data, len(self.data), 21))
         self.assertEqual(
-            binary_search(self.data, len(self.data), 13), 13,
+            binary_search(self.data, len(self.data), 13),
+            13,
         )

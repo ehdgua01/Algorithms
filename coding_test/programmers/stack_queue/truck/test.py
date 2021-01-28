@@ -9,7 +9,8 @@ class UnitTest(unittest.TestCase):
             solution(bridge_length=2, weight=10, truck_weights=[7, 4, 5, 6]), 8
         )
         self.assertEqual(
-            solution(bridge_length=100, weight=100, truck_weights=[10]), 101,
+            solution(bridge_length=100, weight=100, truck_weights=[10]),
+            101,
         )
         self.assertEqual(
             solution(

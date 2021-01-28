@@ -12,19 +12,23 @@ class TestCase(unittest.TestCase):
 
     def test_disjoint_set(self) -> None:
         self.assertIsNot(
-            self.set_a.find_set(), self.set_b.find_set(),
+            self.set_a.find_set(),
+            self.set_b.find_set(),
         )
 
         self.set_a.union(self.set_c)
         self.assertEqual(
-            self.set_a.find_set(), self.set_c.find_set(),
+            self.set_a.find_set(),
+            self.set_c.find_set(),
         )
 
         self.assertIsNot(
-            self.set_c.find_set(), self.set_d.find_set(),
+            self.set_c.find_set(),
+            self.set_d.find_set(),
         )
 
         self.set_c.union(self.set_d)
         self.assertEqual(
-            self.set_a.find_set(), self.set_d.find_set(),
+            self.set_a.find_set(),
+            self.set_d.find_set(),
         )

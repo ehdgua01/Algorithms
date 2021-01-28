@@ -19,19 +19,22 @@ class AbstractTestCase(unittest.TestCase):
 
         result = self.func(ascii_lowercase, "lmnop")
         self.assertEqual(
-            result, {"start": 11, "end": 15, "match": "lmnop", "offset": 0},
+            result,
+            {"start": 11, "end": 15, "match": "lmnop", "offset": 0},
         )
         self.assertEqual(ascii_lowercase[result["start"] : result["end"] + 1], "lmnop")
 
         result = self.func(ascii_lowercase, "lmnop", 10)
         self.assertEqual(
-            result, {"start": 11, "end": 15, "match": "lmnop", "offset": 10},
+            result,
+            {"start": 11, "end": 15, "match": "lmnop", "offset": 10},
         )
         self.assertEqual(ascii_lowercase[result["start"] : result["end"] + 1], "lmnop")
 
         result = self.func(ascii_lowercase, "lmnasdop")
         self.assertEqual(
-            result, {"start": -1, "end": -1, "match": "", "offset": 0},
+            result,
+            {"start": -1, "end": -1, "match": "", "offset": 0},
         )
 
 
