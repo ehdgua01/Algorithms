@@ -3,8 +3,8 @@
 
 https://programmers.co.kr/learn/courses/30/lessons/42583
 """
-from typing import Deque
 from collections import deque
+from typing import Deque
 
 
 def solution(bridge_length: int, weight: int, truck_weights: list) -> int:

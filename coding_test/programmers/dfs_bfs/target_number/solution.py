@@ -3,8 +3,8 @@
 
 https://programmers.co.kr/learn/courses/30/lessons/43165
 """
-from typing import List
 from operator import add, sub
+from typing import List
 
 
 def dfs(numbers: List[int], target: int, current: int, result: List[bool]) -> bool:

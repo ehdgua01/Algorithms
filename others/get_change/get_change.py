@@ -1,6 +1,6 @@
-from typing import List, Counter as CounterType
 from collections import Counter
-
+from typing import Counter as CounterType
+from typing import List
 
 COINS = [500, 100, 50, 10, 5, 1]
 

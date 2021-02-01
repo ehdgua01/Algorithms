@@ -1,10 +1,10 @@
 """
 Simple adjacency matrix undirected graph
 """
-from typing import List, Deque, DefaultDict, Tuple, Any, Dict, Set
 from collections import defaultdict, deque
 from functools import reduce
 from operator import iconcat
+from typing import Any, DefaultDict, Deque, Dict, List, Set, Tuple
 
 
 class Vertex(object):

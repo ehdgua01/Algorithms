@@ -1,8 +1,8 @@
 """
 Simple adjacency list directed graph
 """
-from typing import Union, Any, Deque
 from collections import deque
+from typing import Any, Deque, Union
 
 
 class Edge(object):

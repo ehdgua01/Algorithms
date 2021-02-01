@@ -1,9 +1,6 @@
 import unittest
 
-from .expression_binary_tree import (
-    postfix_to_tree,
-    calculate_expression_tree,
-)
+from .expression_binary_tree import calculate_expression_tree, postfix_to_tree
 
 
 class TestCase(unittest.TestCase):

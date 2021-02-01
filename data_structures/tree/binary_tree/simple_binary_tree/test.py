@@ -2,11 +2,11 @@ import unittest
 
 from .simple_binary_tree import (
     Node,
-    pre_order_tree,
-    in_order_tree,
-    post_order_tree,
     destroy_tree,
+    in_order_tree,
     is_full,
+    post_order_tree,
+    pre_order_tree,
 )
 
 

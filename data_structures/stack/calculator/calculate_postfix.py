@@ -1,6 +1,6 @@
 import operator
 
-from ..stack import Stack, Node
+from ..stack import Node, Stack
 
 __OPERATOR = {
     "+": operator.add,

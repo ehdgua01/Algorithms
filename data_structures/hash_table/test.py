@@ -1,11 +1,11 @@
 import unittest
 
-from .division_method import DivisionMethodHashTable
 from .digits_folding import DigitsFoldingHashTable
-from .linked_list_hash_table import LinkedListHashTable
-from .linear_probing import LinearProbingHashTable
-from .quadratic_probing import QuadraticProbingHashTable
+from .division_method import DivisionMethodHashTable
 from .double_hashing import DoubleHashingHashTable
+from .linear_probing import LinearProbingHashTable
+from .linked_list_hash_table import LinkedListHashTable
+from .quadratic_probing import QuadraticProbingHashTable
 
 
 class TestCase(unittest.TestCase):

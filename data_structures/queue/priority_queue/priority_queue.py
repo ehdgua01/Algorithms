@@ -1,5 +1,5 @@
 import math
-from typing import Tuple, Any
+from typing import Any, Tuple
 
 
 class PriorityQueue(object):

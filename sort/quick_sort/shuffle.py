@@ -3,7 +3,7 @@
 정렬 작업 전에 배열의 인덱스를 랜덤으로 섞어 주는 전처리 작업을 추가해서 최악의 경우를 피한다.
 """
 import random
-from typing import List, Any
+from typing import Any, List
 
 from .quick_sort import quick_sort
 

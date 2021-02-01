@@ -1,6 +1,6 @@
 import re
 
-from ..stack import Stack, Node
+from ..stack import Node, Stack
 
 OPERATOR = {
     "*": 3,

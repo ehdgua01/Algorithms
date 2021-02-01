@@ -1,4 +1,4 @@
-from typing import List, Any
+from typing import Any, List
 
 
 def merge_sort(data: List[Any], left: int, right: int) -> List[Any]:

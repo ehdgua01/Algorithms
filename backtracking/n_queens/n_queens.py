@@ -1,4 +1,4 @@
-from typing import List, Union, Tuple
+from typing import List, Tuple, Union
 
 RESULT_TYPE = List[List[Tuple[int, int]]]
 BOARD_TYPE = List[Union[int, None]]

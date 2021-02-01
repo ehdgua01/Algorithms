@@ -1,6 +1,6 @@
 import unittest
 
-from .solution import Solution, ListNode
+from .solution import ListNode, Solution
 
 
 class TestCase(unittest.TestCase):

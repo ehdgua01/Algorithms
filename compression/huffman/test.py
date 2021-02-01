@@ -1,6 +1,6 @@
 import unittest
 
-from .huffman import huffman_encode, huffman_decode
+from .huffman import huffman_decode, huffman_encode
 
 
 class TestCase(unittest.TestCase):

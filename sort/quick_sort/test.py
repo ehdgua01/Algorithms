@@ -1,10 +1,10 @@
-import unittest
 import random
+import unittest
 
-from .quick_sort import quick_sort
-from .shuffle import shuffle_quick_sort
-from .random_pivot import random_pivot_quick_sort
 from .median_of_three import median_of_three_quick_sort
+from .quick_sort import quick_sort
+from .random_pivot import random_pivot_quick_sort
+from .shuffle import shuffle_quick_sort
 from .stack import stack_quick_sort
 
 

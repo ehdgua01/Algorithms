@@ -3,7 +3,7 @@
 기준 요소를 랜덤으로 결정하여 정렬한다.
 """
 import random
-from typing import List, Any
+from typing import Any, List
 
 
 def random_pivot_quick_sort(data: List[Any], left: int, right: int) -> List[Any]:

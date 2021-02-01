@@ -3,7 +3,7 @@
 
 https://programmers.co.kr/learn/courses/30/lessons/42842
 """
-from math import sqrt, floor
+from math import floor, sqrt
 from typing import List
 
 

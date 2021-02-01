@@ -3,8 +3,8 @@
 
 https://programmers.co.kr/learn/courses/30/lessons/42841
 """
-from typing import List
 from itertools import permutations
+from typing import List
 
 
 def solution(baseball: List[List[int]]) -> int:

@@ -1,5 +1,5 @@
-from typing import List, Union
 from math import floor, sqrt
+from typing import List, Union
 
 
 class LinearProbingHashTable(object):

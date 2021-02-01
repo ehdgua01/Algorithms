@@ -1,10 +1,10 @@
 import unittest
 
 from .linear_search import linear_search
-from .move_to_front import move_to_front
-from .linked_list_move_to_front import linked_list_move_to_front, Node
-from .transpose import transpose_linear_search
+from .linked_list_move_to_front import Node, linked_list_move_to_front
 from .linked_list_transpose import linked_list_transpose
+from .move_to_front import move_to_front
+from .transpose import transpose_linear_search
 
 
 class TestCase(unittest.TestCase):

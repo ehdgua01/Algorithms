@@ -1,6 +1,5 @@
-import re
 import operator
-
+import re
 
 __OPERATOR = {
     "+": operator.add,

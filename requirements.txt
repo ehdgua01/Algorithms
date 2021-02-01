@@ -2,3 +2,4 @@ pytest
 flake8
 black
 pyflakes>=2.2.0
+pre-commit

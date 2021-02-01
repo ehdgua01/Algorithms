@@ -1,4 +1,4 @@
-from typing import List, Any
+from typing import Any, List
 
 
 def shell_sort(collection: List[Any]) -> List[Any]:

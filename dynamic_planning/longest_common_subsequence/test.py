@@ -1,8 +1,8 @@
 import unittest
 from typing import List
 
-from .simple_lcs import simple_lcs
 from .lcs import lcs
+from .simple_lcs import simple_lcs
 
 
 class TestCase(unittest.TestCase):

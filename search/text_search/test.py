@@ -1,10 +1,10 @@
 import unittest
 from string import ascii_lowercase
 
+from .boyer_moore import boyer_moore
+from .knuth_morris_pratt import knuth_morris_pratt
 from .native_search import native_search
 from .rabin_karp import rabin_karp
-from .knuth_morris_pratt import knuth_morris_pratt
-from .boyer_moore import boyer_moore
 
 
 class AbstractTestCase(unittest.TestCase):

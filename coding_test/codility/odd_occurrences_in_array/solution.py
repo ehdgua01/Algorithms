@@ -1,5 +1,5 @@
-from typing import List
 from collections import Counter
+from typing import List
 
 
 def solution(A: List[int]) -> int:

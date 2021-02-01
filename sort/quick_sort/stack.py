@@ -1,7 +1,7 @@
 """
 대용량의 데이터를 정렬하는데 부적합한 퀵 정렬을 개선
 """
-from typing import List, Any
+from typing import Any, List
 
 
 class Node(object):

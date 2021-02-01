@@ -1,6 +1,5 @@
 from typing import List
 
-
 MatrixType = List[List[int]]
 
 

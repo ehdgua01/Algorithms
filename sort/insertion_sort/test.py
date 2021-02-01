@@ -1,7 +1,7 @@
 import unittest
 
 from .insertion_sort import insertion_sort
-from .linked_list_i_sort import linked_list_i_sort, Node
+from .linked_list_i_sort import Node, linked_list_i_sort
 
 
 class TestCase(unittest.TestCase):

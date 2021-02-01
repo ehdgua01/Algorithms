@@ -1,6 +1,6 @@
-from typing import Tuple, Dict, Union, Any
 from collections import Counter
 from queue import PriorityQueue
+from typing import Any, Dict, Tuple, Union
 
 
 class Node(object):
