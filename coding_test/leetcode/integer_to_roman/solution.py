@@ -18,6 +18,6 @@ class Solution:
         result = ""
         for int_, roman_num in reversed(symbols.items()):
             if num // int_ != 0:
-                result += roman_num * (num // int_)
-                num %= int_
+                s, num = divmod(num, int_)
+                result += roman_num * s
         return result
