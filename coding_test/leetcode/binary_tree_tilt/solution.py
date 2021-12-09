@@ -1,4 +1,4 @@
-from typing import Optional, Tuple
+from typing import Optional
 
 
 class TreeNode:
@@ -13,19 +13,16 @@ class Solution:
         self.result = 0
 
     def findTilt(self, root: Optional[TreeNode]) -> int:
-        def traverse_subtree(subtree: Optional[TreeNode]) -> Tuple[int, int]:
+        def sum_subtree(subtree):
             if subtree is None:
-                return 0, 0
-
-            left_total, left_tilt = traverse_subtree(subtree.left)
-            right_total, right_tilt = traverse_subtree(subtree.right)
-            self.result += left_tilt + right_tilt
-            return (subtree.val + left_total + right_total), abs(
-                left_total - right_total
-            )
+                return 0
+            left = sum_subtree(subtree.left)
+            right = sum_subtree(subtree.right)
+            self.result += abs(left - right)
+            return subtree.val + left + right
 
         if root is None:
             return 0
-        _, tilt = traverse_subtree(root)
-        self.result += tilt
-        return self.result
+        left_subtree_total = sum_subtree(root.left)
+        right_subtree_total = sum_subtree(root.right)
+        return self.result + abs(left_subtree_total - right_subtree_total)
