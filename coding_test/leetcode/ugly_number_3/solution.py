@@ -3,7 +3,7 @@ import math
 
 class Solution:
     def nthUglyNumber(self, n: int, a: int, b: int, c: int) -> int:
-        def fulfill(num) -> bool:
+        def fulfilled(num) -> bool:
             total = (
                 num // a
                 + num // b
@@ -26,7 +26,7 @@ class Solution:
         left, right = 1, n * min(a, b, c)
         while left < right:
             mid = left + (right - left) // 2
-            if fulfill(mid):
+            if fulfilled(mid):
                 right = mid
             else:
                 left = mid + 1
