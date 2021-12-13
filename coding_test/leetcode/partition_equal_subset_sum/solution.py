@@ -6,7 +6,9 @@ class Solution:
         total_sum = sum(nums)
         if total_sum & 1:
             return False
-        half_sum, dp = total_sum // 2, 1
+        half_sum = total_sum // 2
+        dp = [True] + [False] * half_sum
         for num in nums:
-            dp |= dp << num
-        return dp & 1 << half_sum
+            for j in range(half_sum, num - 1, -1):
+                dp[j] |= dp[j - num]
+        return dp[half_sum]
