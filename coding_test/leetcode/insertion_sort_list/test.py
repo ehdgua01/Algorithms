@@ -6,9 +6,4 @@ def test_solution():
     sorted_node = insertion_sort_list(
         ListNode(4, ListNode(2, ListNode(1, ListNode(3))))
     )
-    current = sorted_node.next
-    sorted_values = [sorted_node.val]
-    while current:
-        sorted_values.append(current.val)
-        current = current.next
-    assert sorted_values == [1, 2, 3, 4]
+    assert list(node.val for node in sorted_node) == [1, 2, 3, 4]
