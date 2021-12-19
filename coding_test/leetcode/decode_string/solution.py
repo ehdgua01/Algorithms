@@ -10,8 +10,8 @@ class Solution:
                 decoded, count = "", 0
             elif char == "]":
                 num = stack.pop()
-                temp = stack.pop()
-                decoded = temp + decoded * num
+                last = stack.pop()
+                decoded = last + decoded * num
             else:
                 decoded += char
         return decoded
