@@ -1,4 +1,3 @@
-from itertools import product
 from typing import List
 
 
@@ -16,8 +15,16 @@ class Solution:
             "8": "tuv",
             "9": "wxyz",
         }
-        result = [
-            "".join(combination)
-            for combination in product(*(mapping[digit] for digit in digits))
-        ]
+
+        def make_combinations(pos: int, current: List[str]):
+            if pos == len(digits):
+                result.append("".join(current))
+                return
+            for char in mapping[digits[pos]]:
+                current.append(char)
+                make_combinations(pos + 1, current)
+                current.pop()
+
+        result = []
+        make_combinations(0, [])
         return result
