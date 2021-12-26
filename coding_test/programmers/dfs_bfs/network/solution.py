@@ -8,21 +8,18 @@ from typing import List
 
 def solution(n: int, computers: List[List[int]]) -> int:
     answer = 0
-    known = set()
+    visited = [False] * n
 
     for i in range(n):
-        if i in known:
+        if visited[i]:
             continue
 
-        network = [computers[i]]
+        networks = [computers[i]]
         answer += 1
-        known.add(i)
-
-        while network:
-            computer = network.pop()
-
-            for index, c in enumerate(computer):
-                if c == 1 and index not in known:
-                    known.add(index)
-                    network.append(computers[index])
+        while networks:
+            network = networks.pop()
+            for j, connected in enumerate(network):
+                if connected and not visited[j]:
+                    networks.append(computers[j])
+                    visited[j] = True
     return answer
