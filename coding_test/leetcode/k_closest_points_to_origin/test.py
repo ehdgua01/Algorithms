@@ -6,8 +6,8 @@ class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
         return heapq.nsmallest(k, points, key=self.get_distance)
 
-    def get_distance(self, points: List[int]) -> int:
-        return points[0] ** 2 + points[1] ** 2
+    def get_distance(self, point: List[int]) -> int:
+        return point[0] ** 2 + point[1] ** 2
 
 
 def test_solution():
