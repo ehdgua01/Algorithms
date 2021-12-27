@@ -1,5 +1,4 @@
 from collections import deque
-from math import trunc
 
 
 class Solution:
@@ -12,10 +11,7 @@ class Solution:
             if c.isdigit():
                 current = current * 10 + int(c)
                 continue
-            if operator is None:
-                nums.append(current)
-            else:
-                self.operate(operator, current, nums)
+            self.operate(operator, current, nums)
             operator, current = c, 0
             if len(nums) == 3:  # 메모리 크기 줄이기
                 nums.appendleft(nums.popleft() + nums.popleft())
@@ -24,11 +20,11 @@ class Solution:
         return sum(nums)
 
     def operate(self, operator, current, nums):
-        if operator == "+":
+        if operator is None or operator == "+":
             nums.append(current)
         elif operator == "-":
             nums.append(-current)
         elif operator == "*":
             nums.append(nums.pop() * current)
         else:
-            nums.append(trunc(nums.pop() / current))
+            nums.append(int(nums.pop() / current))
