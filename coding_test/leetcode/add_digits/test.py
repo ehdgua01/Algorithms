@@ -1,10 +1,6 @@
 class Solution:
     def addDigits(self, num: int) -> int:
-        sum_ = sum(map(int, str(num)))
-        if sum_ < 10:
-            return sum_
-        else:
-            return self.addDigits(sum_)
+        return 1 + (num - 1) % 9 if num else 0
 
 
 def test_solution():
