@@ -22,9 +22,7 @@ class Solution:
                 max_left = (
                     max(nums1[i - 1], nums2[j - 1])
                     if i and j
-                    else nums1[i - 1]
-                    if i
-                    else nums2[j - 1]
+                    else nums1[i - 1] if i else nums2[j - 1]
                 )
 
                 if (m + n) % 2 == 1:
@@ -33,8 +31,6 @@ class Solution:
                 min_right = (
                     min(nums1[i], nums2[j])
                     if i != m and j != n
-                    else nums2[j]
-                    if i == m
-                    else nums1[i]
+                    else nums2[j] if i == m else nums1[i]
                 )
                 return (max_left + min_right) / 2

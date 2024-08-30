@@ -1,6 +1,7 @@
 """
 Simple adjacency matrix undirected graph
 """
+
 from collections import defaultdict, deque
 from functools import reduce
 from operator import iconcat

@@ -61,7 +61,7 @@ class QuadraticProbingHashTable(object):
                 self.set(value)
             else:
                 coefficient = kwargs.get("coefficient", 0) + 1
-                self.set(value, key + (coefficient ** 2), coefficient=coefficient)
+                self.set(value, key + (coefficient**2), coefficient=coefficient)
 
     @property
     def keys(self):

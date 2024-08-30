@@ -1,6 +1,7 @@
 """
 Simple adjacency list directed graph
 """
+
 from collections import deque
 from typing import Any, Deque, Union
 

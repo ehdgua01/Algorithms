@@ -3,6 +3,7 @@
 
 https://programmers.co.kr/learn/courses/30/lessons/42583
 """
+
 from collections import deque
 from typing import Deque
 

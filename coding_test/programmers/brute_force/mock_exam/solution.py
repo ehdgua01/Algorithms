@@ -3,6 +3,7 @@
 
 https://programmers.co.kr/learn/courses/30/lessons/42840
 """
+
 from math import ceil
 from typing import List
 

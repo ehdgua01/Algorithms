@@ -3,6 +3,7 @@
 
 https://programmers.co.kr/learn/courses/30/lessons/42841
 """
+
 from itertools import permutations
 from typing import List
 

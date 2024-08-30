@@ -5,6 +5,6 @@ class Solution:
         num = str(num)
         for i, n in enumerate(num):
             if n == "6":
-                num = f"{num[:i]}9{num[i+1:]}"
+                num = f"{num[:i]}9{num[i + 1:]}"
                 return num
         return num

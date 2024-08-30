@@ -9,7 +9,7 @@ class Solution:
 
         try:
             answer = int(answer)
-            int32 = 2 ** 31
+            int32 = 2**31
 
             if answer < -int32:
                 return -int32
