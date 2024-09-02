@@ -22,9 +22,8 @@ def solution(dice):
         total = len(v)
         result[k] = win / total * 100
         result[other_key] = lose / total * 100
-    return [
-        i + 1 for i in sorted(result.items(), key=lambda x: x[1], reverse=True)[0][0]
-    ]
+    answer = sorted(result.items(), key=lambda x: x[1])[-1][0]
+    return [i + 1 for i in answer]
 
 
 def test_cases():
