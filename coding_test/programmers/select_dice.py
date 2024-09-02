@@ -4,11 +4,11 @@ from itertools import combinations, product
 
 def solution(dice):
     data = {
-        idx_list: sorted(
-            sum(dice[v][k] for k, v in zip(x, idx_list))
-            for x in product(range(6), repeat=len(idx_list))
+        combi: sorted(
+            sum(dice[v][k] for k, v in zip(x, combi))
+            for x in product(range(6), repeat=len(combi))
         )
-        for idx_list in combinations(range(len(dice)), len(dice) // 2)
+        for combi in combinations(range(len(dice)), len(dice) // 2)
     }
     result = {}
     for k, v in data.items():
