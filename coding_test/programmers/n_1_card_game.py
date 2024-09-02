@@ -26,13 +26,11 @@ def solution(coin, cards):
             break
         candidates.update(deck.draw(num_of_cards_to_draw))
         if check(holds, holds, target_numer):
-            continue
+            ...
         elif coin and check(holds, candidates, target_numer):
             coin -= 1
-            continue
         elif coin > 1 and check(candidates, candidates, target_numer):
             coin -= 2
-            continue
         else:
             break
     return answer
