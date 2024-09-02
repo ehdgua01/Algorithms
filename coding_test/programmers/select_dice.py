@@ -14,14 +14,14 @@ def solution(dice):
     for k, v in data.items():
         if k in result:
             continue
-        other_key = tuple(i for i in range(len(dice)) if i not in k)
+        other_combi = tuple(i for i in range(len(dice)) if i not in k)
         win = lose = 0
         for x_value in v:
-            win += bisect.bisect_left(data[other_key], x_value)
-            lose += len(v) - bisect.bisect_right(data[other_key], x_value)
+            win += bisect.bisect_left(data[other_combi], x_value)
+            lose += len(v) - bisect.bisect_right(data[other_combi], x_value)
         total = len(v)
         result[k] = win / total * 100
-        result[other_key] = lose / total * 100
+        result[other_combi] = lose / total * 100
     answer = sorted(result.items(), key=lambda x: x[1])[-1][0]
     return [i + 1 for i in answer]
 
