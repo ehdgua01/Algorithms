@@ -24,7 +24,7 @@ def solution(coin, cards):
     for answer in itertools.count(1):
         if deck.end_of_deck():
             break
-        candidates = candidates.union(deck.draw(num_of_cards_to_draw))
+        candidates.update(deck.draw(num_of_cards_to_draw))
         if check(holds, holds, target_numer):
             continue
         elif coin and check(holds, candidates, target_numer):
