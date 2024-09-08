@@ -19,12 +19,10 @@ def normalize_polygon(polygon):
 
 def compare_polygon(a, b):
     i = 0
-    while i < 4:
-        if a == b:
-            return True
+    while a != b and i < 4:
         b = rotate(b)
         i += 1
-    return False
+    return i < 4
 
 
 def rotate(polygon):
