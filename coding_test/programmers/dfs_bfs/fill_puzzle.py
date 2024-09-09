@@ -5,10 +5,10 @@ xy_distances = [[0, -1], [0, 1], [-1, 0], [1, 0]]
 
 
 def normalize_polygon(polygon):
-    x_min = min(x for x, y in polygon)
-    x_max = max(x for x, y in polygon)
-    y_min = min(y for x, y in polygon)
-    y_max = max(y for x, y in polygon)
+    x_min = min(x for x, _ in polygon)
+    x_max = max(x for x, _ in polygon)
+    y_min = min(y for _, y in polygon)
+    y_max = max(y for _, y in polygon)
     width = x_max - x_min + 1
     height = y_max - y_min + 1
     matrix = [[0] * width for _ in range(height)]
