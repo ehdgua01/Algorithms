@@ -16,13 +16,4 @@ def test_cases():
     assert solution([1, 2, 3, 9, 10, 12], 7) == 2
     assert solution([1], 2) == -1
     assert solution([2], 2) == 0
-    assert (
-        solution(
-            [
-                2,
-                3,
-            ],
-            2,
-        )
-        == 0
-    )
+    assert solution([2, 3], 2) == 0
