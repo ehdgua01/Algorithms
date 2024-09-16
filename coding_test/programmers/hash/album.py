@@ -9,7 +9,6 @@ import operator
 
 
 def solution(genres, plays):
-    answer = []
     by_genre = operator.itemgetter(1)
     albums = {
         genre: [id_ for id_, _ in xs]
@@ -18,13 +17,16 @@ def solution(genres, plays):
             key=by_genre,
         )
     }
-    for genre, _ in sorted(
-        albums.items(),
-        key=lambda x: sum(plays[id_] for id_ in x[1]),
-        reverse=True,
-    ):
-        answer.extend(sorted(albums[genre], key=lambda x: (-plays[x], x))[:2])
-    return answer
+    return list(
+        itertools.chain.from_iterable(
+            sorted(albums[genre], key=lambda x: (-plays[x], x))[:2]
+            for genre, _ in sorted(
+                albums.items(),
+                key=lambda x: sum(plays[id_] for id_ in x[1]),
+                reverse=True,
+            )
+        )
+    )
 
 
 def test_cases():
