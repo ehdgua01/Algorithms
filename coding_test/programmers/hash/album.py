@@ -4,50 +4,30 @@
 https://programmers.co.kr/learn/courses/30/lessons/42579
 """
 
-from collections import defaultdict
+import itertools
+import operator
 
 
 def solution(genres, plays):
     answer = []
-    summary = list(zip(genres, plays))
-    genres_total_play = defaultdict(lambda: 0)
-    genres_include_song = defaultdict(lambda: [])
-
-    for idx, values in enumerate(summary):
-        g = values[0]
-        gp = values[1]
-        genres_total_play[g] += gp
-        genres_include_song[g].append(idx)
-
-    while genres_total_play:
-        most_plays_count = max(genres_total_play.values())
-        most_plays_genres = ""
-
-        for k in genres_total_play.keys():
-            if genres_total_play[k] == most_plays_count:
-                most_plays_genres = k
-
-        del genres_total_play[most_plays_genres]
-
-        if len(genres_include_song[most_plays_genres]) < 2:
-            answer += genres_include_song[most_plays_genres]
-            continue
-
-        temp = {}
-
-        for song_index in genres_include_song[most_plays_genres]:
-            temp[song_index] = summary[song_index][1]
-
-        for i in range(2):
-            song_index = None
-            most_plays = max(temp.values())
-
-            for key in temp.keys():
-                if most_plays == temp[key]:
-                    song_index = key
-                    answer.append(song_index)
-                    break
-
-            del temp[song_index]
-
+    by_genre = operator.itemgetter(1)
+    albums = {
+        genre: [id_ for id_, _ in xs]
+        for genre, xs in itertools.groupby(
+            sorted(enumerate(genres), key=by_genre),
+            key=by_genre,
+        )
+    }
+    for genre, _ in sorted(
+        albums.items(),
+        key=lambda x: sum(plays[id_] for id_ in x[1]),
+        reverse=True,
+    ):
+        answer.extend(sorted(albums[genre], key=lambda x: (-plays[x], x))[:2])
     return answer
+
+
+def test_cases():
+    assert solution(
+        ["classic", "pop", "classic", "classic", "pop"], [500, 600, 150, 800, 2500]
+    ) == [4, 1, 3, 0]
