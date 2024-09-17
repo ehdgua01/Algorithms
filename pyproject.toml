@@ -1,0 +1,9 @@
+[tool.isort]
+profile = "black"
+
+[tool.black]
+line_length = 120
+
+[tool.pytest.ini_options]
+python_files = ["test*"]
+norecursedirs = ["dev_matching", "delivery_hero"]

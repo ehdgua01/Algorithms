@@ -1,7 +1,3 @@
-[tool:pytest]
-python_files = test*
-norecursedirs = dev_matching delivery_hero
-
 [flake8]
 exclude = venv
 max-line-length = 120
@@ -11,6 +7,3 @@ ignore =
     E701,
     E231,
     W503
-
-[isort]
-profile = black
