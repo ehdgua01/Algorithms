@@ -3,11 +3,7 @@ def solution(n, times):
     high = max(times) * n
     while low <= high:
         mid = (low + high) // 2
-        if sum(mid // t for t in times) >= n:
-            answer = mid
-            high = mid - 1
-        else:
-            low = mid + 1
+        answer, high, low = (mid, mid - 1, low) if sum(mid // t for t in times) >= n else (answer, high, mid + 1)
     return answer
 
 
