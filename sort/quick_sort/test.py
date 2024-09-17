@@ -14,9 +14,7 @@ class TestCase(unittest.TestCase):
         self.sorted = sorted(self.unsorted)
 
     def test_quick_sort(self) -> None:
-        self.assertEqual(
-            quick_sort(self.unsorted, 0, len(self.unsorted) - 1), self.sorted
-        )
+        self.assertEqual(quick_sort(self.unsorted, 0, len(self.unsorted) - 1), self.sorted)
 
     def test_shuffle_quick_sort(self) -> None:
         self.assertEqual(shuffle_quick_sort(self.unsorted), self.sorted)

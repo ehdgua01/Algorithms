@@ -4,9 +4,7 @@ from typing import Any, Dict, Tuple, Union
 
 
 class Node(object):
-    def __init__(
-        self, value: Union[str, None], bitstring=None, left=None, right=None
-    ) -> None:
+    def __init__(self, value: Union[str, None], bitstring=None, left=None, right=None) -> None:
         self.value = value
         self.bitstring: str = bitstring
         self.left: Union[Node, None] = left

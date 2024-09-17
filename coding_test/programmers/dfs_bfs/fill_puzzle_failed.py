@@ -36,9 +36,7 @@ def extract_polygon(grid, active_value, queue, visited):
         x, y, cell = queue.popleft()
         for arrow, (dx, dy, n_cell) in xy_distances.items():
             nx, ny = x + dx, y + dy
-            if (0 > nx or nx >= len(grid) or 0 > ny or ny >= len(grid)) or cell[
-                arrow
-            ] == "1":
+            if (0 > nx or nx >= len(grid) or 0 > ny or ny >= len(grid)) or cell[arrow] == "1":
                 continue
             if grid[ny][nx] == active_value:
                 cell = "".join("1" if i == arrow else c for i, c in enumerate(cell))

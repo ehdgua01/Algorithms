@@ -27,10 +27,7 @@ class MaxHeap(object):
 
         while left or right:
             if left and right:
-                if (
-                    self.data[current] < self.data[left]
-                    or self.data[current] < self.data[right]
-                ):
+                if self.data[current] < self.data[left] or self.data[current] < self.data[right]:
                     if self.data[right] <= self.data[left]:
                         self.__swap(current, left)
                         current = left

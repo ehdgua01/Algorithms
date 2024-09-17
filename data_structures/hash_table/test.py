@@ -68,9 +68,7 @@ class TestCase(unittest.TestCase):
         hash_table.set(14)
         hash_table.set(3)
         self.assertEqual(hash_table.size, 11)
-        self.assertEqual(
-            hash_table.keys, {0: 0, 2: 2, 3: 14, 4: 4, 6: 6, 8: 8, 9: 3, 10: 10}
-        )
+        self.assertEqual(hash_table.keys, {0: 0, 2: 2, 3: 14, 4: 4, 6: 6, 8: 8, 9: 3, 10: 10})
 
     def test_double_hashing(self) -> None:
         hash_table = DoubleHashingHashTable(7)

@@ -13,9 +13,7 @@ class AbstractTestCase(unittest.TestCase):
         raise unittest.SkipTest
 
     def test_case_1(self) -> None:
-        self.assertRaises(
-            ValueError, self.func, text=ascii_lowercase, pattern="lmnop", offset=30
-        )
+        self.assertRaises(ValueError, self.func, text=ascii_lowercase, pattern="lmnop", offset=30)
 
         result = self.func(ascii_lowercase, "lmnop")
         self.assertEqual(

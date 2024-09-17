@@ -4,15 +4,7 @@ import math
 class Solution:
     def nthUglyNumber(self, n: int, a: int, b: int, c: int) -> int:
         def fulfilled(num) -> bool:
-            total = (
-                num // a
-                + num // b
-                + num // c
-                - num // ab
-                - num // ac
-                - num // bc
-                + num // abc
-            )
+            total = num // a + num // b + num // c - num // ab - num // ac - num // bc + num // abc
             return total >= n
 
         def lcm(x, y) -> int:

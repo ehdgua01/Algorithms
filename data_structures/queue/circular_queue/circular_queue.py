@@ -28,6 +28,4 @@ class CircularQueue(object):
 
     @property
     def is_full(self) -> bool:
-        return (
-            False if self.is_empty else (self.rear + 1) == (self.front + self.capacity)
-        )
+        return False if self.is_empty else (self.rear + 1) == (self.front + self.capacity)

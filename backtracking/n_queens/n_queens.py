@@ -8,9 +8,7 @@ def is_safe(board: BOARD_TYPE, row: int) -> bool:
     current_row = 0
 
     while current_row < row:
-        if board[current_row] == board[row] or (
-            abs(board[current_row] - board[row]) == abs(current_row - row)
-        ):
+        if board[current_row] == board[row] or (abs(board[current_row] - board[row]) == abs(current_row - row)):
             return False
         current_row += 1
     return True

@@ -30,9 +30,7 @@ def parse_maze(maze: str) -> Tuple[MAZE, POSITION]:
         return maze_info, start_pos
 
 
-def next_step(
-    maze: MAZE, current_pos: POSITION, direction: int
-) -> Union[POSITION, bool]:
+def next_step(maze: MAZE, current_pos: POSITION, direction: int) -> Union[POSITION, bool]:
     x, y = current_pos
 
     if direction == 0:

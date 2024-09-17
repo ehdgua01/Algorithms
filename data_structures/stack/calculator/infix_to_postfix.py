@@ -36,10 +36,7 @@ def infix_to_postfix(expression: str) -> list:
         else:
             if token not in OPERATOR:
                 raise Exception("허용되지 않은 연산자입니다.")
-            while (
-                not operator_stack.is_empty
-                and OPERATOR[operator_stack.peek()] >= OPERATOR[token]
-            ):
+            while not operator_stack.is_empty and OPERATOR[operator_stack.peek()] >= OPERATOR[token]:
                 # 현재 연산자보다 우선순위가 높은 연산자들을 식에 추가
                 postfix.append(operator_stack.pop())
             # 현재 추가되는 연산자가 가장 우선순위가 높은 연산자

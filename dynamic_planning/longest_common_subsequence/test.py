@@ -10,8 +10,7 @@ class TestCase(unittest.TestCase):
         self.first_string: str = "GOOD MORNING"
         self.second_string: str = "GUTEN MORGEN"
         self.result_matrix: List[List[int]] = [
-            [0] * (len(self.second_string) + 1)
-            for _ in range(len(self.first_string) + 1)
+            [0] * (len(self.second_string) + 1) for _ in range(len(self.first_string) + 1)
         ]
 
     @property
@@ -25,10 +24,7 @@ class TestCase(unittest.TestCase):
                 subsequence += self.first_string[m - 1]
                 m -= 1
                 n -= 1
-            elif (
-                self.result_matrix[m - 1][n] == current
-                and self.result_matrix[m][n - 1] < current
-            ):
+            elif self.result_matrix[m - 1][n] == current and self.result_matrix[m][n - 1] < current:
                 m -= 1
             else:
                 n -= 1

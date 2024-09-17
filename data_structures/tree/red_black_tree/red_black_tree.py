@@ -169,10 +169,7 @@ class RedBlackTree(object):
 
     def remove(self, target):
         if target := self.search(target):
-            if (
-                target.left == RedBlackTree.empty_node
-                or target.right == RedBlackTree.empty_node
-            ):
+            if target.left == RedBlackTree.empty_node or target.right == RedBlackTree.empty_node:
                 removed = target
             else:
                 removed = self.get_min(target)
@@ -200,10 +197,7 @@ class RedBlackTree(object):
                         successor.parent.color = 1
                         self.left_rotate(successor.parent)
                     else:
-                        if (
-                            successor.sibling.left.is_black
-                            and successor.sibling.right.is_black
-                        ):
+                        if successor.sibling.left.is_black and successor.sibling.right.is_black:
                             successor.sibling.color = 1
                             successor = successor.parent
                         else:

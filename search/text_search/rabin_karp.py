@@ -29,9 +29,9 @@ def rabin_karp(text: str, pattern: str, offset: int = 0) -> Dict[str, Union[str,
         if hash_value is None:
             hash_value = hashing(text[i : i + len(pattern)])
         else:
-            hash_value = 2 * (
-                hash_value - (ord(text[i - 1]) * (2 ** (len(pattern) - 1)))
-            ) + ord(text[i + len(pattern) - 1])
+            hash_value = 2 * (hash_value - (ord(text[i - 1]) * (2 ** (len(pattern) - 1)))) + ord(
+                text[i + len(pattern) - 1]
+            )
 
         if hash_value == hash_pattern:
             result["start"] = i

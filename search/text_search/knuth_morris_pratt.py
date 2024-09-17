@@ -1,9 +1,7 @@
 from typing import Dict, Union
 
 
-def knuth_morris_pratt(
-    text: str, pattern: str, offset: int = 0
-) -> Dict[str, Union[str, int]]:
+def knuth_morris_pratt(text: str, pattern: str, offset: int = 0) -> Dict[str, Union[str, int]]:
     if offset < 0 or len(text) < offset:
         raise ValueError
 

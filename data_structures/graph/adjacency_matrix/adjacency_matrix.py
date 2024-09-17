@@ -61,9 +61,7 @@ class AdjacencyMatrixGraph(object):
 
         for __vertex in self.vertices:
             result[__vertex.value]["visited"] = __vertex.is_visited
-            result[__vertex.value]["edges"] = [
-                (__vertex.index, target) for target in __vertex.edges
-            ]
+            result[__vertex.value]["edges"] = [(__vertex.index, target) for target in __vertex.edges]
         return result
 
     def dfs(self, __vertex: Vertex = None) -> None:

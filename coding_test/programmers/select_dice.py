@@ -4,10 +4,7 @@ from itertools import combinations, product
 
 def solution(dice):
     data = {
-        combi: sorted(
-            sum(dice[v][k] for k, v in zip(x, combi))
-            for x in product(range(6), repeat=len(combi))
-        )
+        combi: sorted(sum(dice[v][k] for k, v in zip(x, combi)) for x in product(range(6), repeat=len(combi)))
         for combi in combinations(range(len(dice)), len(dice) // 2)
     }
     result = {}
@@ -27,9 +24,7 @@ def solution(dice):
 
 
 def test_cases():
-    assert solution(
-        [[1, 2, 3, 4, 5, 6], [3, 3, 3, 3, 4, 4], [1, 3, 3, 4, 4, 4], [1, 1, 4, 4, 5, 5]]
-    ) == [1, 4]
+    assert solution([[1, 2, 3, 4, 5, 6], [3, 3, 3, 3, 4, 4], [1, 3, 3, 4, 4, 4], [1, 1, 4, 4, 5, 5]]) == [1, 4]
     assert solution([[1, 2, 3, 4, 5, 6], [2, 2, 4, 4, 6, 6]]) == [2]
     assert solution(
         [

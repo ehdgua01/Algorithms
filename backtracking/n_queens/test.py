@@ -10,9 +10,7 @@ class TestCase(unittest.TestCase):
 
     def test_4_queens(self) -> None:
         result = n_queens(4)
-        self.assertEqual(
-            result, [[(1, 0), (3, 1), (0, 2), (2, 3)], [(2, 0), (0, 1), (3, 2), (1, 3)]]
-        )
+        self.assertEqual(result, [[(1, 0), (3, 1), (0, 2), (2, 3)], [(2, 0), (0, 1), (3, 2), (1, 3)]])
         self.assertEqual(len(result), 2)
 
     def test_8_queens(self) -> None:

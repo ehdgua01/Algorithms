@@ -9,6 +9,5 @@ def test_solution():
     assert decode_string("abc3[cd]xyz") == "abccdcdcdxyz"
     assert decode_string("100[leetcode]") == "leetcode" * 100
     assert (
-        decode_string("3[z]2[2[y]pq4[2[jk]e1[f]]]ef")
-        == "zzzyypqjkjkefjkjkefjkjkefjkjkefyypqjkjkefjkjkefjkjkefjkjkefef"
+        decode_string("3[z]2[2[y]pq4[2[jk]e1[f]]]ef") == "zzzyypqjkjkefjkjkefjkjkefjkjkefyypqjkjkefjkjkefjkjkefjkjkefef"
     )

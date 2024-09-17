@@ -9,9 +9,7 @@ def solution(n, results):
             loses[loser].update(loses[i])
         for winner in loses[i]:
             wins[winner].update(wins[i])
-    return sum(
-        len(winners) + len(losers) == n - 1 for winners, losers in zip(wins, loses)
-    )
+    return sum(len(winners) + len(losers) == n - 1 for winners, losers in zip(wins, loses))
 
 
 def test_cases():

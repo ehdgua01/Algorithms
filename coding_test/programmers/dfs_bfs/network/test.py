@@ -8,18 +8,10 @@ class TestCase(unittest.TestCase):
         self.assertEqual(solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]), 2)
         self.assertEqual(solution(3, [[1, 1, 0], [1, 1, 1], [0, 1, 1]]), 1)
         self.assertEqual(solution(3, [[1, 1, 1], [1, 1, 1], [1, 1, 1]]), 1)
-        self.assertEqual(
-            solution(4, [[1, 1, 1, 0], [1, 1, 0, 0], [1, 0, 1, 1], [0, 0, 1, 1]]), 1
-        )
-        self.assertEqual(
-            solution(4, [[1, 1, 1, 0], [1, 1, 0, 1], [1, 0, 1, 1], [0, 1, 1, 1]]), 1
-        )
-        self.assertEqual(
-            solution(4, [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]), 4
-        )
-        self.assertEqual(
-            solution(4, [[1, 0, 0, 1], [0, 1, 1, 1], [0, 1, 1, 0], [1, 0, 1, 1]]), 1
-        )
+        self.assertEqual(solution(4, [[1, 1, 1, 0], [1, 1, 0, 0], [1, 0, 1, 1], [0, 0, 1, 1]]), 1)
+        self.assertEqual(solution(4, [[1, 1, 1, 0], [1, 1, 0, 1], [1, 0, 1, 1], [0, 1, 1, 1]]), 1)
+        self.assertEqual(solution(4, [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]), 4)
+        self.assertEqual(solution(4, [[1, 0, 0, 1], [0, 1, 1, 1], [0, 1, 1, 0], [1, 0, 1, 1]]), 1)
         self.assertEqual(
             solution(
                 5,

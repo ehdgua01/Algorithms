@@ -72,9 +72,7 @@ class AdjacencyListGraph(object):
             if current_vertex.adjacency_list is not None:
                 __edge = current_vertex.adjacency_list
                 while __edge is not None:
-                    result[current_vertex.value]["adjacency_list"][
-                        __edge.target.value
-                    ] = __edge.weight
+                    result[current_vertex.value]["adjacency_list"][__edge.target.value] = __edge.weight
                     __edge = __edge.next
 
             current_vertex = current_vertex.next
