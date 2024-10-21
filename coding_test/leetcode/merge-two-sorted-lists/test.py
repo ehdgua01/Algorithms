@@ -13,19 +13,15 @@ class Solution:
         dummy = ListNode()
         head = dummy
         p1, p2 = list1, list2
-        while head:
-            if p1 and p2:
-                if p1.val <= p2.val:
-                    head.next = p1
-                    p1 = p1.next
-                else:
-                    head.next = p2
-                    p2 = p2.next
-            elif p1:
+        while p1 and p2:
+            if p1.val <= p2.val:
                 head.next = p1
                 p1 = p1.next
-            elif p2:
+            else:
                 head.next = p2
                 p2 = p2.next
-            head = head.next
+        if p1:
+            head.next = p1
+        elif p2:
+            head.next = p2
         return dummy.next
