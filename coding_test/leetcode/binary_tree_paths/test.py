@@ -28,7 +28,8 @@ class Solution:
                 backtrack(node.right)
                 stack.pop()
 
-        backtrack(root)
+        if root is not None:
+            backtrack(root)
         return result
 
 
