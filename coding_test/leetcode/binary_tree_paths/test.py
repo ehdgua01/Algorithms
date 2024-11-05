@@ -6,6 +6,7 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
+        self.is_leaf = left is right is None
 
 
 class Solution:
@@ -15,9 +16,11 @@ class Solution:
 
         def backtrack(node: TreeNode):
             stack.append(node.val)
-            if node.left is node.right is None:
+
+            if node.is_leaf:
                 result.append("->".join(map(str, stack)))
                 return
+
             if node.left:
                 backtrack(node.left)
                 stack.pop()
