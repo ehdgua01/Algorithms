@@ -7,18 +7,16 @@ class Solution:
         stack = []
 
         def backtrack(i: int, current: int):
-            if i >= len(candidates):
-                return
-
-            if current == target:
-                result.append(stack[:])
-            elif current < target:
-                stack.append(candidates[i])
-                backtrack(i, current + candidates[i])
-                stack.pop()
+            if i < len(candidates):
+                if candidates[i] <= current:
+                    stack.append(candidates[i])
+                    backtrack(i, current - candidates[i])
+                    stack.pop()
                 backtrack(i + 1, current)
+            elif current == 0:
+                result.append(stack[:])
 
-        backtrack(0, 0)
+        backtrack(0, target)
         return result
 
 
