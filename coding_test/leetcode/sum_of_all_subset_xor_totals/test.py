@@ -1,12 +1,12 @@
-import functools
-import operator
+from functools import reduce
 from itertools import combinations
+from operator import xor
 from typing import List
 
 
 class Solution:
     def subsetXORSum(self, nums: List[int]) -> int:
-        return sum(functools.reduce(operator.xor, c) for i in range(1, len(nums) + 1) for c in combinations(nums, i))
+        return sum(reduce(xor, c) for i in range(1, len(nums) + 1) for c in combinations(nums, i))
 
 
 def test_subsetXORSum():
