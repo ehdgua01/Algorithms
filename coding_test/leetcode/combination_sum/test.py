@@ -6,23 +6,19 @@ class Solution:
         result = []
         stack = []
 
-        def backtrack(i: int):
+        def backtrack(i: int, current: int):
             if i >= len(candidates):
                 return
 
-            value = sum(stack)
-
-            if value == target:
+            if current == target:
                 result.append(stack[:])
-                return
-
-            if value < target:
+            elif current < target:
                 stack.append(candidates[i])
-                backtrack(i)
+                backtrack(i, current + candidates[i])
                 stack.pop()
-                backtrack(i + 1)
+                backtrack(i + 1, current)
 
-        backtrack(0)
+        backtrack(0, 0)
         return result
 
 
